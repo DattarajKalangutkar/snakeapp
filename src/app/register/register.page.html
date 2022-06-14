@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registeration</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="centerbutton">
+    <div class="loginas">
+      <ion-radio-group [(ngModel)]="clientRole">
+        <div class="loginastittle">Role</div>
+        <div class="loginasDiv">
+          <div>
+            <div class="title">Rescuer</div>
+            <ion-radio slot="start" value="1"></ion-radio>
+          </div>
+          <div>
+            <div class="title">User</div>
+            <ion-radio slot="start" value="2"></ion-radio>
+          </div>
+        </div>
+      </ion-radio-group>
+    </div>
+    <div class="progress">
+      <div class="stepscount">
+        <ion-label>Step 1</ion-label>
+        <ion-label>Step 2</ion-label>
+        <ion-label>Step 3</ion-label>
+      </div>
+      <ion-progress-bar [value]="progresscount"></ion-progress-bar>
+    </div>
+    <div class="step1" *ngIf="step=='step1'">
+      <div class="eachblock">
+        <div class="title">Name</div>
+        <div class="inputfeild">
+          <ion-input class="inputclass" [(ngModel)]="clientdata.name"></ion-input>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Username</div>
+        <div class="inputfeild">
+          <ion-input class="inputclass" [(ngModel)]="clientdata.username"></ion-input>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Phone</div>
+        <div class="inputfeild">
+          <ion-input class="inputclass" [(ngModel)]="clientdata.phone"></ion-input>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Email</div>
+        <div class="inputfeild">
+          <ion-input class="inputclass" [(ngModel)]="clientdata.email"></ion-input>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Password</div>
+        <div class="inputfeild">
+          <ion-input class="inputclass" [(ngModel)]="clientdata.password"></ion-input>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Confirm Password</div>
+        <div class="inputfeild">
+          <ion-input class="inputclass" [(ngModel)]="clientdata.confirmpassword"></ion-input>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Profile Pic</div>
+        <div class="inputfeild">
+          <ion-button expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
+          <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
+        </div>
+      </div>
+      <div class="lastbutton">
+        <ion-button class="btnclass" (click)="steponeregister()">OTP</ion-button>
+      </div>
+    </div>
+    <div class="step2" *ngIf="step=='step2'">
+      <div class="verifyotp">
+        <p>Please Enter the OTP which is send to dattaraj@gmail.com</p>
+        <div class="eachblock">
+          <div class="title">OTP</div>
+          <div class="inputfeildotp">
+            <ion-input class="otpinputclass" [(ngModel)]="otp1"></ion-input>
+            <ion-input class="otpinputclass" [(ngModel)]="otp2"></ion-input>
+            <ion-input class="otpinputclass" [(ngModel)]="otp3"></ion-input>
+            <ion-input class="otpinputclass" [(ngModel)]="otp4"></ion-input>
+          </div>
+        </div>
+        <div class="lastbutton">
+          <ion-button class="btnclass" (click)="steptworegister()">Verify</ion-button>
+        </div>
+      </div>
+    </div>
+    <div class="step2" *ngIf="step=='step3'">
+      <div class="verifyotp">
+        <p>Hurray!!!!!!! Your account is registered Successfully. Please hit the back button to go to Login Screen</p>
+        <div class="lastbutton">
+          <ion-button class="btnclass" [routerLink]="['/login']">Back</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

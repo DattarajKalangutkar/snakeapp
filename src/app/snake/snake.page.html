@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" [routerLink]="['/home']">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title >Snakes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullcontent">
+    <div class="filtersection">
+      <div class="btnsection">
+        <ion-button *ngIf="btnToggle" style="background-color:#5260ff" (click)="showFilter('all')">
+          All 
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#ffee52" (click)="showFilter('Venomous')">
+          Venomous 
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('Non Venomous')">
+          Non Venomous
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#33c51f" (click)="showFilter('Mildy Venomous')">
+          Mildy Venomous
+        </ion-button>
+        <ion-button  *ngIf="!btnToggle" style="background-color:#fff036" (click)="ToggleBtn()">
+          <ion-icon name="filter-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#fff036" (click)="ToggleBtn()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    <ion-list>
+      <ion-item *ngFor="let snake of snakes;let i=index;" (click)="editItem(snake)">
+        <ion-thumbnail slot="start">
+          <ion-img [src]="snake.snakeImage"></ion-img>
+        </ion-thumbnail>
+        <ion-label>{{snake.snakeName}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div class="fileImageUpload">
+      <input type="file" [(ngModel)]="image" (change)="selectedFile($event)"/>
+      <ion-button (click)="SaveImage()">
+        Save
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>
+

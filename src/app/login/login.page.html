@@ -1,0 +1,37 @@
+<ion-content>
+  <div class="centerbutton">
+    <div class="loginas">
+      <ion-radio-group [(ngModel)]="clientRole">
+        <div class="loginastittle">Role</div>
+        <div class="loginasDiv">
+          <div>
+            <div class="title">Rescuer</div>
+            <ion-radio slot="start" value="1"></ion-radio>
+          </div>
+          <div>
+            <div class="title">User</div>
+            <ion-radio slot="start" value="2"></ion-radio>
+          </div>
+        </div>
+      </ion-radio-group>
+    </div>
+    <div class="eachblock">
+      <div class="title">Phone</div>
+      <div class="inputfeild">
+        <ion-input class="inputclass" [(ngModel)]="username"></ion-input>
+      </div>
+    </div>
+    <div class="eachblock">
+      <div class="title">Password</div>
+      <div class="inputfeild">
+        <ion-input type="password" class="inputclass" [(ngModel)]="userpass"></ion-input>
+      </div>
+    </div>
+    <div class="lastbutton">
+      <ion-button class="btnclass" (click)="login()">Login</ion-button>
+    </div>
+    <div class="lastbutton">
+      <ion-button expand="full" [routerLink]="['/register']">Sign Up</ion-button>
+    </div>
+  </div>
+</ion-content>

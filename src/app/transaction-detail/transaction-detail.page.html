@@ -1,9 +1,113 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>transactionDetail</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Transcation -> 00783</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <div class="centerbutton">
+    <div class="progress">
+      <div class="stepscount">
+        <ion-label>Created</ion-label>
+        <ion-label>Updated</ion-label>
+        <ion-label>Completed</ion-label>
+      </div>
+      <ion-progress-bar [value]="progresscount"></ion-progress-bar>
+    </div>
+    <div class="step1" *ngIf="step>=1">
+      <div class="basicInfo">
+        <div class="heading">Basic Info</div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Initator:</div>
+            <div class="infoinput">Laukik</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">Catcher:</div>
+            <div class="infoinput">Dattu</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">When:</div>
+            <div class="infoinput">22 Jan 2022</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">At:</div>
+            <div class="infoinput">9:30 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step2" *ngIf="step>=2">
+      <div class="snakeInfo">
+        <div class="heading">Snake Info</div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Name:</div>
+            <div class="infoinput">Cobra</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Date:</div>
+            <div class="infoinput">22 Jan 2022</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">Time:</div>
+            <div class="infoinput">9:30 AM</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Length:</div>
+            <div class="infoinput">22</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">Weight:</div>
+            <div class="infoinput">60 Kg</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Address:</div>
+            <div class="infoinput">HNO:354 Maddlo addo Assonora Bardez Goa</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <ion-slides pager="true">
+            <ion-slide>
+              <img src="http://localhost/snake/api/uploads/snake/snake_python.jpg">
+            </ion-slide>
+            <ion-slide>
+              <img src="http://localhost/snake/api/uploads/snake/snake_cobra.jpg">
+            </ion-slide>
+            <ion-slide>
+              <img src="http://localhost/snake/api/uploads/snake/snake_python.jpg">
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </div>
+    </div>
+    <div class="step2" *ngIf="step>=3">
+      <div class="reviewInfo">
+        <div class="heading">Review</div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Rate:</div>
+            <div class="infoinput">4</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Comment:</div>
+            <div class="infoinput">Very Nyc Descipplane</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
+

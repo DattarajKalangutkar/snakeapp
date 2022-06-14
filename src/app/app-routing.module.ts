@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'searchrescuer',
     loadChildren: () => import('./searchrescuer/searchrescuer.module').then( m => m.SearchrescuerPageModule)
+  },
+  {
+    path: 'userhome',
+    loadChildren: () => import('./userhome/userhome.module').then( m => m.UserhomePageModule)
   }
 ];
 

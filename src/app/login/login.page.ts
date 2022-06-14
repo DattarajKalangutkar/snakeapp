@@ -11,8 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginPage implements OnInit {
   private _storage: Storage | null = null;
   clientRole:any = '1';
-  username:string = '';
-  userpass:string = '';
+  username:string = '9545366928';
+  userpass:string = '321';
   constructor(private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
     this.init();
   }
@@ -25,9 +25,14 @@ export class LoginPage implements OnInit {
   async ngOnInit() 
   {
     let role = await this.storage.get('loggedin');
+    console.log(role);
     if(role != null && role == "Rescuser")
     {
       this.router.navigate(['/home']);
+    }
+    else
+    {
+      this.router.navigate(['/userhome']);
     }
   }
 
@@ -58,7 +63,26 @@ export class LoginPage implements OnInit {
     }
     else
     {
+      data = {
+        "userPhone":this.username,
+        "userPassword":this.userpass
+      };
 
+      this.snakeService.loginUser(data).subscribe((data:any)=>{
+        if(data.flag)
+        {
+          console.log(data);
+          this.storage.clear();
+          this.storage.set('loggedin',"User");
+          this.storage.set('userid',data.userid);
+          this.storage.set('token',data.token);
+          this.router.navigate(['/userhome']);
+        }
+        else
+        {
+          alert(data.message);
+        }
+      });
     }
   }
 }

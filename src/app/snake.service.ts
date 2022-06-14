@@ -77,6 +77,14 @@ export class SnakeService {
     );
   }
 
+  loginUser(data)
+  {
+    return this.httpClient.post(this.endpoint+'auth/userLogin.php',data).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
   activeRescuerLatLong(id,data)
   {
     return this.httpClient.post(this.endpoint+'rescuer/activeLatLong.php?id='+id,data).pipe(

@@ -108,4 +108,12 @@ export class SnakeService {
       catchError(this.handleError('Delete user'))
     );
   }
+
+  getlistoftranscation(clientrole,id)
+  {
+    return this.httpClient.get(this.endpoint+'transcation/updationtransactionlist.php?clientType='+clientrole+'&client='+id).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
 }

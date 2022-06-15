@@ -14,8 +14,8 @@ import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
 export class SearchrescuerPage implements OnInit {
   @ViewChild('map')
   newMap: GoogleMap;
-  currentlat:any = 15.6208;
-  currentlong:any = 73.8978;
+  currentlat:any;
+  currentlong:any;
   private _storage: Storage | null = null;
   rescuserlist:any = [];
   detailview:boolean = false;
@@ -40,8 +40,8 @@ export class SearchrescuerPage implements OnInit {
 
   async ngOnInit() 
   {
-    await this.getactiveresucer();
     await this.getcurrentlocation();
+    await this.getactiveresucer();
     await this.inititiseMap();
     await this.setupmarker();
   }
@@ -76,8 +76,8 @@ export class SearchrescuerPage implements OnInit {
       apiKey: 'AIzaSyA48bFWf-zBgfiR5sp-wqxsNk5-wpbTgBM',
       config: {
         center: {
-          lat: 15.6208,
-          lng: 73.8978,
+          lat: this.currentlat,
+          lng: this.currentlong,
         },
         zoom: 15,
       },

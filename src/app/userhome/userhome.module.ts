@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { UserhomePageRoutingModule } from './userhome-routing.module';
 
 import { UserhomePage } from './userhome.page';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserhomePageRoutingModule
+    UserhomePageRoutingModule,
+    IonicStorageModule.forRoot()
   ],
   declarations: [UserhomePage]
 })

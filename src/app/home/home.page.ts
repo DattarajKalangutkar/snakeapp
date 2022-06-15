@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-home',
@@ -31,11 +32,12 @@ export class HomePage implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  activeLatLong()
+  async activeLatLong()
   {
+    const coordinates = await Geolocation.getCurrentPosition();
     var data = {
-      "lat":"15.5937",
-      "long":"73.8142"
+      "lat":coordinates.coords.latitude,
+      "long":coordinates.coords.longitude
     };
 
     this.snakeService.activeRescuerLatLong(this.rescuserId,data).subscribe((data:any)=>{

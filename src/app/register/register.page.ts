@@ -69,6 +69,9 @@ export class RegisterPage implements OnInit {
   steponeregister()
   {
     this.snakeService.sendotp(this.clientdata.email).subscribe((data:any)=>{
+      this.snakeService.sendmail(this.clientdata.email,data.otp).subscribe((send:any)=>{
+        console.log(send);
+      });
       if(data.flag)
       {
         this.step = 'step2';

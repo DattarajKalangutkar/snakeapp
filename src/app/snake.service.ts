@@ -196,4 +196,16 @@ export class SnakeService {
       catchError(this.handleError('Delete user'))
     );
   }
+
+  sendmail(email,otp)
+  {
+    var data = {
+      "email":email,
+      "otp":otp
+    };
+    return this.httpClient.get('https://treacel.000webhostapp.com/sendmail.php?email='+email+'&otp='+otp).pipe(
+      tap(_ => console.log("asdsd")),
+      catchError(this.handleError('Delete user'))
+    );
+  }
 }

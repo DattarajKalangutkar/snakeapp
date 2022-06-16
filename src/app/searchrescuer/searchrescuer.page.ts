@@ -25,9 +25,7 @@ export class SearchrescuerPage implements OnInit {
   rescuerCallNumber: string = '';
   rescuerImage: string = '';
   rescuserId:string = '';
-
-
-  userId:any = '11';
+  userId:any;
 
   constructor(private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
     this.init();
@@ -36,6 +34,7 @@ export class SearchrescuerPage implements OnInit {
   async init() {
     const storage = await this.storage.create();
     this._storage = storage;
+    this.userId = await this.storage.get("userid");
   }
 
   async ngOnInit() 

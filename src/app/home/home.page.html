@@ -9,8 +9,8 @@
       <ion-button (click)="activeLatLong()">
         <ion-icon name="refresh-outline"></ion-icon>
       </ion-button>
-      <ion-button>
-        <ion-icon name="call-outline"></ion-icon>
+      <ion-button [routerLink]="['/notification']">
+        <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
       <ion-button [routerLink]="['/achivement']">
         <ion-icon name="trophy-outline"></ion-icon>
@@ -23,43 +23,25 @@
 </ion-header>
 
 <ion-content>
-  <div class="position">
-    <ion-tabs>
-      <ion-tab-bar slot="top">
-        <ion-searchbar style="width: 350px;"></ion-searchbar>
-      </ion-tab-bar>
-    </ion-tabs>
-  </div>
-  <ul class="thumbnail">
+  <ion-searchbar></ion-searchbar>
+  <div class="thumbnail">
     <li>
       <a href="#slide1"><img src="/assets/snake1.jpg"/></a>
     </li>
+  </div>
+  <div class="thumbnail">
     <li>
-      <a href="#slide2"><img src="/assets/snake2.jpg"/></a>
+      <a href="#slide1"><img src="/assets/snake2.jpg"/></a>
     </li>
+  </div>
+  <div class="thumbnail">
     <li>
-      <a href="#slide3"><img src="/assets/snake3.jpg"/></a>
+      <a href="#slide1"><img src="/assets/snake3.jpg"/></a>
     </li>
+  </div>
+  <div class="thumbnail">
     <li>
-      <a href="#slide4"><img src="/assets/snake4.jpg"/></a>
+      <a href="#slide1"><img src="/assets/snake4.jpg"/></a>
     </li>
-    <li>
-      <a href="#slide5"><img src="/assets/snake5.jpg"/></a>
-    </li>
-    <li>
-      <a href="#slide6"><img src="/assets/snake6.jpg"/></a>
-    </li>
-    <li>
-      <a href="#slide7"><img src="/assets/snake7.jpg"/></a>
-    </li>
-    <li>
-      <a href="#slide8"><img src="/assets/snake8.jpg"/></a>
-    </li>
-    <li>
-      <a href="#slide9"><img src="/assets/snake9.jpg"/></a>
-    </li>
-    <li>
-      <a href="#slide10"><img src="/assets/snake10.jpg"/></a>
-    </li>
-  </ul>
+  </div>
 </ion-content>

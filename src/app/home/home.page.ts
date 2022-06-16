@@ -3,6 +3,7 @@ import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
 import { Geolocation } from '@capacitor/geolocation';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ import { Geolocation } from '@capacitor/geolocation';
 export class HomePage implements OnInit {
   private _storage: Storage | null = null;
   rescuserId:any;
-  constructor(private snakeService:SnakeService,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
+  constructor(private menu: MenuController,private snakeService:SnakeService,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
+    this.menu.enable(true);
     this.init();
   }
 

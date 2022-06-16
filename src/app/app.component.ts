@@ -5,9 +5,14 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Snake', url: '/snake', icon: 'mail'},
-    { title: '', url: '/snake', icon: 'mail'},
+  public userPages = [
+    { title: 'Events', url: '/events', icon: 'mail'},
+    { title: 'First Aid', url: '/firstaid', icon: 'mail'},
+    { title: 'wild Life', url: '/wildlife', icon: 'mail'},
+    { title: 'Hospitals', url: '/hospital', icon: 'mail'},
+    { title: 'History', url: '/transactionlist', icon: 'mail'},
+    { title: 'Snake Info', url: '/snakeinfo', icon: 'mail'},
+    { title: 'Ranking', url: '/ranking', icon: 'mail'},
   ];
   constructor() {}
 }

@@ -1,0 +1,20 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullcontent">
+    <div class="eachseg" *ngFor="let hospital of allhospitaldata;let i=index;" (click)="opendetail(hospital.id);">
+      <div class="custinfo">
+        <h4>Name: {{hospital.hospitalName}}</h4>
+        <h4>Phone: {{hospital.hospitalContact}}</h4>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

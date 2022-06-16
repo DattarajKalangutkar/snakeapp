@@ -1,0 +1,39 @@
+.title
+{
+ text-align: center;
+ font-size: 50px;
+ font-family: 'Times New Roman', Times, serif;
+ 
+}
+.fullcontent{
+    width: 100%;
+    height: 70%;
+    padding: 8px 5px;
+    margin-bottom: 0px;
+    display:inline-block;
+}
+
+.eachseg{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 70px;
+    box-shadow: 3px 4px 50px #081b18;
+    background-color: rgb(217, 129, 244);
+}
+
+.eachseg h4{
+    width: 50%;
+    float: left;
+    margin: -5px 0px 0px 0px;
+    padding: 5px;
+}
+
+#a{
+     text-align: right;
+    }
+    .custinfo h4{
+        width: 50%;
+        float: left;
+        margin: 27px 0px 0px 0px;
+        padding: 0px;
+    }

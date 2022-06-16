@@ -1,0 +1,23 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullcontent">
+    <div class="eachseg" *ngFor="let wildlife of allwildlifedata;let i=index;" (click)="opendetail(wildlife.id);">
+      <div class="custinfo">
+        <h4>Name: {{wildlife.wildlifeName}}</h4>
+        <h4>Phone: {{wildlife.wildlifeContact}}</h4>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+
+

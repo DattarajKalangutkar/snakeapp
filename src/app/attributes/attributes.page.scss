@@ -1,0 +1,28 @@
+.container
+{
+    margin-left: 10px;
+}
+
+.lastbutton{
+    text-align: center;
+    padding: 11px;
+}
+
+.background{
+    --background: url("/assets/back1.png") 0 0/100% 100% no-repeat;
+    }
+
+.container3
+{
+    position: relative;
+    width: 90%;
+    margin: auto;
+    color: red;
+    font-size: large;
+    font-family: Impact, fantasy;
+}    
+ 
+.eachseg{
+    margin-bottom: 2px;
+    box-shadow: 3px 4px 50px #23197d;
+}

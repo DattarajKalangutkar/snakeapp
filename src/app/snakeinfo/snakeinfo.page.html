@@ -1,0 +1,119 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" [routerLink]="['/home']">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button fill="solid" [routerLink]="['/wholesales']">
+        <ion-icon name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title >History</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullcontent">
+    <div class="filtersection">
+      <div class="btnsection">
+        <ion-button *ngIf="btnToggle" style="background-color:#5260ff" (click)="showFilter('all')">
+          All 
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#ffee52" (click)="showFilter('1')">
+          Venomous 
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('2')">
+          Non Venomous 
+        </ion-button>
+        <ion-button  *ngIf="btnToggle" style="background-color:#33c51f" (click)="showFilter('3')">
+          Mildy Venomous
+        </ion-button>
+        <ion-button  *ngIf="!btnToggle" style="background-color:#fff036" (click)="ToggleBtn()">
+          <ion-icon name="filter-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#fff036" (click)="ToggleBtn()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+        
+      </div>
+    </div>
+    <div class="eachseg" *ngFor="let snake of snakes;let i=index;" (click)="opendetail(snake.id);">
+      <h3>Snake Name: {{snake.snakeName}}</h3>
+      <div class="custinfo">
+        <h4>Snake Type: {{snake.snakeType}}</h4>
+        <h4>Snake LocalName: {{snake.snakeLocalName}}</h4>
+      </div>
+      <div class="fullsection">
+        <!-- <div class="leftsec">
+          <h4>Date: {{transaction.createdDate | date}}</h4>
+          <h4>Time: {{transaction.createdDate | date:'shortTime'}}</h4>
+        </div> -->
+        <!-- <div class="rightsec">
+          <h3>Total Amount</h3>
+          <h4>Rs. {{transaction.totalAmount}}</h4>
+        </div> -->
+      </div>
+      <!-- <div class="iconsec">
+        <div class="eachsectionicon">
+          <ion-icon style="color:#890606;" name="pencil-outline" *ngIf="transaction.status != 'Complete'" (click)="editorder(transaction)"></ion-icon>
+          <ion-icon style="color:#20d720;" name="checkmark-done-outline" *ngIf="transaction.status == 'Complete'"></ion-icon>
+        </div>
+        <div class="eachsectionicon">
+          <ion-icon style="color:#c30b0b;" name="document-text-outline" (click)="generatepdf(transaction)"></ion-icon>
+        </div>
+        <div class="eachsectionicon">
+          <ion-icon style="color: #4848b5;" name="eye-outline" (click)="vieworder(transaction)"></ion-icon>
+        </div>
+        <div class="eachsectionicon">
+          <ion-icon name="trash-outline" (click)="deleteorder(transaction,i)"></ion-icon>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</ion-content>
+
+<!-- <ion-tabs>
+  <ion-tab-bar slot="top">
+    <ion-searchbar style="width: 350px;"></ion-searchbar>
+    <ion-tab-button tab="notifications">
+    <ion-icon name="notifications"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>
+</ion-tabs> -->
+
+<!-- <ion-router-outlet id="main"></ion-router-outlet>
+<ion-tabs>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home"  [routerLink]="['/rhomepage']">
+    <ion-icon name="home"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="clock" >
+    <ion-icon name="time"></ion-icon>
+    <ion-label>History</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="add-circle">
+    <ion-icon name="add-circle"></ion-icon>
+    <ion-label>Post</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="person">
+    <ion-icon name="person"></ion-icon>
+    <ion-label>Profile</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+</ion-tabs> -->
+
+

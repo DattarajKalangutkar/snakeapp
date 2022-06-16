@@ -1,0 +1,19 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullcontent">
+    <div class="eachseg" *ngFor="let event of alleventsdata;let i=index;" (click)="opendetail(event.id);">
+      <div class="custinfo">
+        <h3> {{event.eventName}}</h3>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

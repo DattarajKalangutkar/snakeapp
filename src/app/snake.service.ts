@@ -124,4 +124,76 @@ export class SnakeService {
       catchError(this.handleError('Delete user'))
     );
   }
+
+  getallhospitals() 
+  {
+    return this.httpClient.get(this.endpoint+'master/sample.php?modules=hospital').pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  gethospitaldetail(id) 
+  {
+    return this.httpClient.get(this.endpoint+'master/sample.php?modules=hospital&id='+id).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  getallwildlife() 
+  {
+    return this.httpClient.get(this.endpoint+'master/sample.php?modules=wildlife').pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  getwildlifedetail(id) 
+  {
+    return this.httpClient.get(this.endpoint+'master/sample.php?modules=wildlife&id='+id).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  getallusers(status,roleid,clientid) 
+  {
+    return this.httpClient.get(this.endpoint+'transcation/updationtransactionlist.php?status='+status+'&client='+roleid+'&clientType='+clientid).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  getsnakedetail(id) 
+  {
+    return this.httpClient.get(this.endpoint+'master/sample.php?modules=snake&id='+id).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  posttranscation(data)
+  {
+    return this.httpClient.post(this.endpoint+'transcation/transrescuer.php?id=1',data).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  getallevents() 
+  {
+    return this.httpClient.get(this.endpoint+'master/sample.php?modules=events').pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  geteventdetail(id) 
+  {
+    return this.httpClient.get(this.endpoint+'master/sample.php?modules=events&id='+id).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
 }

@@ -1,0 +1,94 @@
+ion-content{
+    --background: #dafdff;
+}
+.fullcontent{
+    width: 100%;
+    height: 100%;
+    padding: 8px 5px;
+}
+
+.eachseg{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 70px;
+    box-shadow: 3px 4px 50px #081b18;
+    background-color: aqua;
+}
+
+.eachseg h3{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 4px 0px;
+    font-family: monospace;
+}
+
+.fullsection{
+    width: 100%;
+    height: 70px;
+}
+
+.leftsec{
+    width: 50%;
+    margin: 0px;
+    padding: 8px;
+    float: left;
+}
+
+.leftsec h4{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: monospace;
+    margin: 6px;
+}
+
+.rightsec{
+    width: 50%;
+    margin: 0px;
+    padding: 6px;
+    float: right;
+    height: 30px;
+}
+
+.rightsec h3,h4{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: monospace;
+    margin: 6px;
+}
+
+.iconsec{
+    width: 100%;
+    height: 50px;
+    padding: 2%;
+}
+
+.eachsectionicon{
+    width: 25%;
+    float: left;
+    text-align: center;
+    padding: 1% 0px;
+    zoom: 1.5;
+}
+
+.custinfo h4{
+    width: 50%;
+    float: left;
+    margin: 27px 0px 0px 0px;
+    padding: 0px;
+}
+
+.filtersection
+{
+    width: 100%;
+}
+
+.iconsection
+{
+    zoom: 2;
+    text-align: right;
+    color: red;
+}
+

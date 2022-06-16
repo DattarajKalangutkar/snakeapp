@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> 
+    <ion-title>Find By Attributes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form action="action_page.php">
+    <div class="container1">
+      <ion-content class='background' fullscreen></ion-content>
+        <div class="container3">
+          <p class>Note: No field is mandatory.</p>
+          <p class>Enter the details only if you know correctly.</p>
+        </div>
+
+        <ion-list>
+            <ion-item class="eachseg">
+              <ion-label>Type</ion-label>
+              <ion-select multiple="false" cancelText="cancel" okText="Okay!">
+                <ion-select-option value="v">Venomous</ion-select-option>
+                <ion-select-option value="MV">Midly Venomous</ion-select-option>
+                <ion-select-option value="NV">Non Venomous</ion-select-option>
+              </ion-select>
+            </ion-item>
+          
+            <ion-item class="eachseg">
+              <ion-label>Color</ion-label>
+              <ion-select multiple="false" cancelText="cancel" okText="Okay!">
+                <ion-select-option value="brown">Brown</ion-select-option>
+                <ion-select-option value="black">Black</ion-select-option>
+                <ion-select-option value="yellow">Yellow</ion-select-option>
+                <ion-select-option value="reddish">Reddish</ion-select-option>
+              </ion-select>
+            </ion-item>
+    
+            <ion-item class="eachseg">
+              <ion-label>Head Shape</ion-label>
+              <ion-select multiple="false" cancelText="cancel" okText="Okay!">
+                <ion-select-option value="Triangular">Triangular</ion-select-option>
+                <ion-select-option value="broader">Broader</ion-select-option>
+              </ion-select>
+            </ion-item>
+    
+    
+            <ion-item class="eachseg">
+              <ion-label>Eye Shape</ion-label>
+              <ion-select multiple="false" cancelText="cancel" okText="Okay!">
+                <ion-select-option value="round">Round</ion-select-option>
+                <ion-select-option value="vertical">Vertical</ion-select-option>
+                <ion-select-option value="pear shaped">Pear shaped</ion-select-option>
+              </ion-select>
+            </ion-item>
+    
+          </ion-list>
+      </div> 
+    <div class="lastbutton">
+      <ion-button expand="full">Find the snake </ion-button>
+    </div> 
+  </form>
+  
+  
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home" [routerLink]="['/rhomepage']">
+    <ion-icon name="home"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="clock" [routerLink]="['/history']">
+    <ion-icon name="time"></ion-icon>
+    <ion-label>History</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="add-circle" [routerLink]="['/post']">
+    <ion-icon name="add-circle"></ion-icon>
+    <ion-label>Post</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="person" [routerLink]="['/rprofile']">
+    <ion-icon name="person"></ion-icon>
+    <ion-label>Profile</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+
+

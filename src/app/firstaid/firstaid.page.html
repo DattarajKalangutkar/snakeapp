@@ -1,0 +1,55 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fullcontent">
+  <img src="assets/do and don't.jpg" width="90%" height="50%">
+  <ul>
+    <h3>Dont's</h3>
+    <li>Do not attempt to remove snake venom by sucking it or cutting it out.</li>
+    <li>Do not apply ice or a cold compress to a snake bite.</li>
+    <li>Do not apply a tourniquet</li>
+    <li>Do not raise the site of the bite above the person's heart</li>
+    <li>Do not drink alcohol as a painkiller</li>
+    <li>Do not take pain relievers (such as aspirin, ibuprofen, naproxen)</li>
+  </ul>
+
+  <ul>
+    <h3>Do's</h3>
+    <li>Wash with soap and water</li>
+    <li>Get to a hospital</li>
+    <li>Hydrate the patient</li>
+    <li>Keep a close watch on respiration and bleeding</li>
+    <li>Get medical help early</li>
+    <li>Have the person lie down with wound below the heart</li>
+    <li>Keep the person calm and at rest, remaining as still as possible to keep venom from spreading</li>
+  </ul>
+</ion-content>
+
+<ion-router-outlet id="main"></ion-router-outlet>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home" [routerLink]="['/rhomepage']">
+    <ion-icon name="home"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="clock" [routerLink]="['/history']">
+    <ion-icon name="time"></ion-icon>
+    <ion-label>History</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="add-circle" [routerLink]="['/post']">
+    <ion-icon name="add-circle"></ion-icon>
+    <ion-label>Post</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="person" [routerLink]="['/rprofile']">
+    <ion-icon name="person"></ion-icon>
+    <ion-label>Profile</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>

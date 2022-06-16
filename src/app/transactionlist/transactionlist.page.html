@@ -1,16 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button fill="solid" [routerLink]="['/home']">
+      <ion-button fill="solid" [routerLink]="['/userhome']">
         <ion-icon name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="secondary">
-      <ion-button fill="solid" [routerLink]="['/wholesales']">
-        <ion-icon name="add-circle"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title >Whole Sales List</ion-title>
+    <ion-title >Transcation</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,11 +16,14 @@
         <ion-button *ngIf="btnToggle" style="background-color:#5260ff" (click)="showFilter('all')">
           All 
         </ion-button>
-        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('pending')">
-          Pending 
+        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('1')">
+          Created 
         </ion-button>
-        <ion-button *ngIf="btnToggle" style="background-color:#33c51f" (click)="showFilter('Complete')">
-          Complete
+        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('2')">
+          Updated 
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#33c51f" (click)="showFilter('3')">
+          Completed
         </ion-button>
         <ion-button  *ngIf="!btnToggle" style="background-color:#fff036" (click)="ToggleBtn()">
           <ion-icon name="filter-outline"></ion-icon>
@@ -36,35 +34,32 @@
         
       </div>
     </div>
-    <div class="eachseg" *ngFor="let ord of orders;let i=index;">
-      <h3>Order No : {{ord.id}}</h3>
+    <div class="eachseg" *ngFor="let tran of trans;let i=index;">
+      <h3>Transcation No : {{tran.tranid}}</h3>
       <div class="custinfo">
-        <h4>Name: {{ord.custname}}</h4>
-        <h4>Phone: {{ord.custphone}}</h4>
+        <h4>Catcher: {{tran.transRescuerId.vName}}</h4>
+        <h4>Phone: {{tran.transRescuerId.vPhone}}</h4>
       </div>
       <div class="fullsection">
         <div class="leftsec">
-          <h4>Date: {{ord.created | date}}</h4>
-          <h4>Time: {{ord.created | date:'shortTime'}}</h4>
+          <h4>Date: {{tran.createdDate | date}}</h4>
+          <h4>Time: {{tran.createdDate | date:'shortTime'}}</h4>
         </div>
         <div class="rightsec">
-          <h3>Total Amount</h3>
-          <h4>Rs. {{ord.totalAmount}}</h4>
+          <h3>Status</h3>
+          <h4>{{tran.transStatus.vName}}</h4>
         </div>
       </div>
       <div class="iconsec">
-        <div class="eachsectionicon">
-          <ion-icon style="color:#890606;" name="pencil-outline" *ngIf="ord.status != 'Complete'" (click)="editorder(ord)"></ion-icon>
-          <ion-icon style="color:#20d720;" name="checkmark-done-outline" *ngIf="ord.status == 'Complete'"></ion-icon>
+        <div class="eachsectionicon" *ngIf="tran.transStatus.iId == '2' || tran.transStatus.iId == '3'">
+          <ion-icon style="color:#890606;" name="pencil-outline" *ngIf="tran.transStatus.iId != '3'" (click)="editorder(tran)"></ion-icon>
+          <ion-icon style="color:#20d720;" name="checkmark-done-outline" *ngIf="tran.transStatus.iId == '3'"></ion-icon>
         </div>
         <div class="eachsectionicon">
-          <ion-icon style="color:#c30b0b;" name="document-text-outline" (click)="generatepdf(ord)"></ion-icon>
+          <ion-icon style="color: #4848b5;" name="eye-outline" (click)="vieworder(tran)"></ion-icon>
         </div>
         <div class="eachsectionicon">
-          <ion-icon style="color: #4848b5;" name="eye-outline" (click)="vieworder(ord)"></ion-icon>
-        </div>
-        <div class="eachsectionicon">
-          <ion-icon name="trash-outline" (click)="deleteorder(ord,i)"></ion-icon>
+          <ion-icon name="trash-outline" (click)="deleteorder(tran,i)"></ion-icon>
         </div>
       </div>
     </div>

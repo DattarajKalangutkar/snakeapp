@@ -116,4 +116,12 @@ export class SnakeService {
       catchError(this.handleError('Delete user'))
     );
   }
+
+  gettranscation(id)
+  {
+    return this.httpClient.get(this.endpoint+'transcation/updationtransactionlist.php?id='+id).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
 }

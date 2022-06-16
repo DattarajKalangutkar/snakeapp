@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Transcation -> 00783</ion-title>
+    <ion-title>Transcation - {{transdata.tranid}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -22,21 +22,21 @@
         <div class="eachbasicblock">
           <div class="infoblock">
             <div class="infotitle">Initator:</div>
-            <div class="infoinput">Laukik</div>
+            <div class="infoinput">{{transdata.transUserId.vName}}</div>
           </div>
           <div class="infoblock">
             <div class="infotitle">Catcher:</div>
-            <div class="infoinput">Dattu</div>
+            <div class="infoinput">{{transdata.transRescuerId.vName}}</div>
           </div>
         </div>
         <div class="eachbasicblock">
           <div class="infoblock">
             <div class="infotitle">When:</div>
-            <div class="infoinput">22 Jan 2022</div>
+            <div class="infoinput">{{transdata.createdDate | date}}</div>
           </div>
           <div class="infoblock">
             <div class="infotitle">At:</div>
-            <div class="infoinput">9:30 AM</div>
+            <div class="infoinput">{{transdata.createdDate | date:'shortTime'}}</div>
           </div>
         </div>
       </div>
@@ -47,33 +47,33 @@
         <div class="eachbasicblock">
           <div class="infoblock">
             <div class="infotitle">Name:</div>
-            <div class="infoinput">Cobra</div>
+            <div class="infoinput">{{transdata.transSnakeId.vName}}</div>
           </div>
         </div>
         <div class="eachbasicblock">
           <div class="infoblock">
             <div class="infotitle">Date:</div>
-            <div class="infoinput">22 Jan 2022</div>
+            <div class="infoinput">{{transdata.transRescuerDate | date}}</div>
           </div>
           <div class="infoblock">
             <div class="infotitle">Time:</div>
-            <div class="infoinput">9:30 AM</div>
+            <div class="infoinput">{{transdata.transRescuerDate | date:'shortTime'}}</div>
           </div>
         </div>
         <div class="eachbasicblock">
           <div class="infoblock">
             <div class="infotitle">Length:</div>
-            <div class="infoinput">22</div>
+            <div class="infoinput">{{transdata.transSnakeLength}}</div>
           </div>
           <div class="infoblock">
             <div class="infotitle">Weight:</div>
-            <div class="infoinput">60 Kg</div>
+            <div class="infoinput">{{transdata.transSnakeWeight}} Kg</div>
           </div>
         </div>
         <div class="eachbasicblock">
           <div class="infoblock">
             <div class="infotitle">Address:</div>
-            <div class="infoinput">HNO:354 Maddlo addo Assonora Bardez Goa</div>
+            <div class="infoinput">{{transdata.transRescuerAddress}}</div>
           </div>
         </div>
         <div class="eachbasicblock">
@@ -97,13 +97,13 @@
         <div class="eachbasicblock">
           <div class="infoblock">
             <div class="infotitle">Rate:</div>
-            <div class="infoinput">4</div>
+            <div class="infoinput">{{transdata.transRate}}</div>
           </div>
         </div>
         <div class="eachbasicblock">
           <div class="infoblock">
             <div class="infotitle">Comment:</div>
-            <div class="infoinput">Very Nyc Descipplane</div>
+            <div class="infoinput">{{transdata.transComment}}</div>
           </div>
         </div>
       </div>

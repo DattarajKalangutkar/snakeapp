@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SnakedetailsPage implements OnInit {
   snakeName:string = 'Cobra';
-  constructor() { }
+  
+  constructor() 
+  { 
+    
+  }
+
+  
 
   ngOnInit() {
   }

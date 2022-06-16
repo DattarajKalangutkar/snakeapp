@@ -12,9 +12,12 @@ export class TransactionlistPage implements OnInit {
   private _storage: Storage | null = null;
   clientRole:any = '2';
   userid:any;
+  btnToggle:boolean = false;
+  trans:any = [];
+  items:any = [];
+  originaltrans:any = [];
   constructor(private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
     this.init();
-    
   }
 
   async init() {
@@ -30,10 +33,38 @@ export class TransactionlistPage implements OnInit {
 
   gettranscationlist()
   {
-    console.log()
     this.snakeService.getlistoftranscation(this.clientRole,this.userid).subscribe((data:any)=>{
-      console.log(data);
+      if(data.count > 0)
+      {
+        this.originaltrans = this.trans = data.rows;
+        console.log(this.trans);
+      }
     });
   }
 
+  ToggleBtn()
+  {
+    if(this.btnToggle)
+      this.btnToggle = false;
+    else
+      this.btnToggle = true;
+  }
+
+  showFilter(identifier:string)
+  {
+    this.trans = this.originaltrans;
+    if(identifier == 'all')
+      this.trans = this.originaltrans;
+    else if(identifier == '1')
+      this.trans = this.trans.filter((res:any)=>(res.transStatus.iId == identifier));
+    else if(identifier == '2')
+      this.trans = this.trans.filter((res:any)=>(res.transStatus.iId == identifier));
+    else
+      this.trans = this.trans.filter((res:any)=>(res.transStatus.iId == identifier));
+  }
+
+  vieworder(data)
+  {
+    this.router.navigate(['/transaction-detail/'+data.id])
+  }
 }

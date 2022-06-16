@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./transactionlist/transactionlist.module').then( m => m.TransactionlistPageModule)
   },
   {
-    path: 'transaction-detail',
+    path: 'transaction-detail/:id',
     loadChildren: () => import('./transaction-detail/transaction-detail.module').then( m => m.TransactionDetailPageModule)
   },
   {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginPage implements OnInit {
   clientRole:any = '1';
   username:string = '';
   userpass:string = '';
-  constructor(private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
+  constructor(private menu: MenuController,private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
+    this.menu.enable(false);
     this.init();
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,9 @@ export class RegisterPage implements OnInit {
   otp2:number;
   otp3:number;
   otp4:number;
-  constructor(private snakeService:SnakeService) { }
+  constructor(private snakeService:SnakeService,private menu: MenuController) {
+    this.menu.enable(false);
+   }
 
   ngOnInit() {
   }

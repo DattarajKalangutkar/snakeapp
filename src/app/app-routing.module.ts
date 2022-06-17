@@ -107,6 +107,18 @@ const routes: Routes = [
     path: 'attributes',
     loadChildren: () => import('./attributes/attributes.module').then( m => m.AttributesPageModule)
   },
+  {
+    path: 'updatetrans/:id',
+    loadChildren: () => import('./updatetrans/updatetrans.module').then( m => m.UpdatetransPageModule)
+  },
+  {
+    path: 'completetrans/:id',
+    loadChildren: () => import('./completetrans/completetrans.module').then( m => m.CompletetransPageModule)
+  },
+  {
+    path: 'rescusertranlist',
+    loadChildren: () => import('./rescusertranlist/rescusertranlist.module').then( m => m.RescusertranlistPageModule)
+  },
 ];
 
 @NgModule({

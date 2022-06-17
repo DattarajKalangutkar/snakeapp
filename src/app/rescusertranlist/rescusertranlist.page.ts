@@ -4,14 +4,15 @@ import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-transactionlist',
-  templateUrl: './transactionlist.page.html',
-  styleUrls: ['./transactionlist.page.scss'],
+  selector: 'app-rescusertranlist',
+  templateUrl: './rescusertranlist.page.html',
+  styleUrls: ['./rescusertranlist.page.scss'],
 })
-export class TransactionlistPage implements OnInit {
+export class RescusertranlistPage implements OnInit {
+
   private _storage: Storage | null = null;
-  clientRole:any = '2';
-  userid:any;
+  clientRole:any = '1';
+  rescuerid:any;
   btnToggle:boolean = false;
   trans:any = [];
   items:any = [];
@@ -27,13 +28,13 @@ export class TransactionlistPage implements OnInit {
 
   async ngOnInit() 
   {
-    this.userid = await this.storage.get('userid');
+    this.rescuerid = await this.storage.get('rescuerid');
     this.gettranscationlist();
   }
 
   gettranscationlist()
   {
-    this.snakeService.getlistoftranscation(this.clientRole,this.userid).subscribe((data:any)=>{
+    this.snakeService.getlistoftranscation(this.clientRole,this.rescuerid).subscribe((data:any)=>{
       if(data.count > 0)
       {
         this.originaltrans = this.trans = data.rows;
@@ -70,6 +71,6 @@ export class TransactionlistPage implements OnInit {
 
   editorder(data)
   {
-    this.router.navigate(['/completetrans/'+data.id])
+    this.router.navigate(['/updatetrans/'+data.id]);
   }
 }

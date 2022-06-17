@@ -173,14 +173,6 @@ export class SnakeService {
     );
   }
 
-  posttranscation(data)
-  {
-    return this.httpClient.post(this.endpoint+'transcation/transrescuer.php?id=1',data).pipe(
-      tap(_ => console.log()),
-      catchError(this.handleError('Delete user'))
-    );
-  }
-
   getallevents() 
   {
     return this.httpClient.get(this.endpoint+'master/sample.php?modules=events').pipe(
@@ -205,6 +197,22 @@ export class SnakeService {
     };
     return this.httpClient.get('https://treacel.000webhostapp.com/sendmail.php?email='+email+'&otp='+otp).pipe(
       tap(_ => console.log("asdsd")),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  updateTranscation(id,data)
+  {
+    return this.httpClient.post(this.endpoint+'transcation/transrescuer.php?id='+id,data).pipe(
+      tap(_ => console.log("")),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  completeTranscation(id,data)
+  {
+    return this.httpClient.post(this.endpoint+'transcation/transuser.php?id='+id,data).pipe(
+      tap(_ => console.log("")),
       catchError(this.handleError('Delete user'))
     );
   }

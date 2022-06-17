@@ -1,20 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
+
 @Component({
-  selector: 'app-transaction-detail',
-  templateUrl: './transaction-detail.page.html',
-  styleUrls: ['./transaction-detail.page.scss'],
+  selector: 'app-updatetrans',
+  templateUrl: './updatetrans.page.html',
+  styleUrls: ['./updatetrans.page.scss'],
 })
-export class TransactionDetailPage implements OnInit {
+export class UpdatetransPage implements OnInit {
+
   clientRole:any = '1';
   step:number;
   progresscount: number = 1;
   id:string = '';
   transdata:any = {};
+  snakes:any = [];
+  clientdata:any = {
+    transSnakeId:'',
+    transSnakeLength:'',
+    transSnakeWeight:'',
+    transRescuerDate:'',
+    transRescuerAddress:'',
+    transStatus:"2",
+    transImage:""
+  };
   constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService) {
     this.id = (this.activeRoute.snapshot.paramMap.get('id') !=null) ? this.activeRoute.snapshot.paramMap.get('id'):'';
     this.gettransdetail(this.id);
+    this.getsnake();
+  }
+
+  getsnake()
+  {
+    this.snakeService.getallsnakes().subscribe((data:any)=>{
+      this.snakes = data.rows;
+    });
   }
 
   ngOnInit() {
@@ -38,4 +58,17 @@ export class TransactionDetailPage implements OnInit {
       }  
     });
   }
+
+  updatetranscation()
+  {
+    this.clientdata.transRescuerDate = this.clientdata.transRescuerDate.toLocaleString().replace(/T/g, " ").split("+")[0];
+    this.snakeService.updateTranscation(this.id,this.clientdata).subscribe((data:any)=>{
+      console.log(data);
+      if(data.flag)
+      {
+        this.router.navigate(['/rescusertranlist/']);
+      }
+    });
+  }
+
 }

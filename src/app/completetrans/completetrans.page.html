@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Transcation - {{transdata.tranid}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="centerbutton">
+    <div class="progress">
+      <div class="stepscount">
+        <ion-label>Created</ion-label>
+        <ion-label>Updated</ion-label>
+        <ion-label>Completed</ion-label>
+      </div>
+      <ion-progress-bar [value]="progresscount"></ion-progress-bar>
+    </div>
+    <div class="step1" *ngIf="step>=1">
+      <div class="basicInfo">
+        <div class="heading">Basic Info</div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Initator:</div>
+            <div class="infoinput">{{transdata.transUserId.vName}}</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">Catcher:</div>
+            <div class="infoinput">{{transdata.transRescuerId.vName}}</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">When:</div>
+            <div class="infoinput">{{transdata.createdDate | date}}</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">At:</div>
+            <div class="infoinput">{{transdata.createdDate | date:'shortTime'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step2" *ngIf="step>=2">
+      <div class="snakeInfo">
+        <div class="heading">Snake Info</div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Name:</div>
+            <div class="infoinput">{{transdata.transSnakeId.vName}}</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Date:</div>
+            <div class="infoinput">{{transdata.transRescuerDate | date}}</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">Time:</div>
+            <div class="infoinput">{{transdata.transRescuerDate | date:'shortTime'}}</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Length:</div>
+            <div class="infoinput">{{transdata.transSnakeLength}}</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">Weight:</div>
+            <div class="infoinput">{{transdata.transSnakeWeight}} Kg</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Address:</div>
+            <div class="infoinput">{{transdata.transRescuerAddress}}</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <ion-slides pager="true">
+            <ion-slide>
+              <img src="http://localhost/snake/api/uploads/snake/snake_python.jpg">
+            </ion-slide>
+            <ion-slide>
+              <img src="http://localhost/snake/api/uploads/snake/snake_cobra.jpg">
+            </ion-slide>
+            <ion-slide>
+              <img src="http://localhost/snake/api/uploads/snake/snake_python.jpg">
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </div>
+    </div>
+    <div class="step1">
+      <div class="eachblock">
+        <div class="title">Rate</div>
+        <div class="inputfeild">
+          <ion-select class="inputclass" placeholder="Select Rate" [(ngModel)]="clientdata.transRate">
+            <ion-select-option *ngFor="let rate of rates" value="{{rate}}">{{rate}}</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Comment</div>
+        <div class="inputfeild">
+          <ion-textarea placeholder="Enter Comments" class="inputclasstext" [(ngModel)]="clientdata.transComment"></ion-textarea>
+        </div>
+      </div>
+      <div class="lastbutton">
+        <ion-button class="btnclass" (click)="updatetranscation()">Completed</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+

@@ -43,7 +43,7 @@ export class UpdatetransPage implements OnInit {
   gettransdetail(id)
   {
     this.snakeService.gettranscation(id).subscribe((data:any)=>{
-      this.transdata = data.rows;
+      this.transdata = data.rows[0];
       if(this.transdata.transStatus.iId == 1){
         this.progresscount = 0.3;
         this.step = 1;

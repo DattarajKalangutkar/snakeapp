@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UhomepagePageRoutingModule } from './uhomepage-routing.module';
+import { CompletetransPageRoutingModule } from './completetrans-routing.module';
 
-import { UhomepagePage } from './uhomepage.page';
+import { CompletetransPage } from './completetrans.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UhomepagePageRoutingModule
+    CompletetransPageRoutingModule
   ],
-  declarations: [UhomepagePage]
+  declarations: [CompletetransPage]
 })
-export class UhomepagePageModule {}
+export class CompletetransPageModule {}

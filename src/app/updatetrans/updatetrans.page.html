@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Transcation - {{transdata.tranid}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="centerbutton">
+    <div class="progress">
+      <div class="stepscount">
+        <ion-label>Created</ion-label>
+        <ion-label>Updated</ion-label>
+        <ion-label>Completed</ion-label>
+      </div>
+      <ion-progress-bar [value]="progresscount"></ion-progress-bar>
+    </div>
+    <div class="step1" *ngIf="step>=1">
+      <div class="basicInfo">
+        <div class="heading">Basic Info</div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">Initator:</div>
+            <div class="infoinput">{{transdata.transUserId.vName}}</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">Catcher:</div>
+            <div class="infoinput">{{transdata.transRescuerId.vName}}</div>
+          </div>
+        </div>
+        <div class="eachbasicblock">
+          <div class="infoblock">
+            <div class="infotitle">When:</div>
+            <div class="infoinput">{{transdata.createdDate | date}}</div>
+          </div>
+          <div class="infoblock">
+            <div class="infotitle">At:</div>
+            <div class="infoinput">{{transdata.createdDate | date:'shortTime'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step1">
+      <div class="eachblock">
+        <div class="title">Snake</div>
+        <div class="inputfeild">
+          <ion-select class="inputclass" placeholder="Select Snake" [(ngModel)]="clientdata.transSnakeId">
+            <ion-select-option *ngFor="let snake of snakes" value="{{snake.id}}">{{snake.snakeName}}</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Length</div>
+        <div class="inputfeild">
+          <ion-input class="inputclass" [(ngModel)]="clientdata.transSnakeLength"></ion-input>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">weight</div>
+        <div class="inputfeild">
+          <ion-input class="inputclass" [(ngModel)]="clientdata.transSnakeWeight"></ion-input>
+        </div>
+      </div>
+      <div class="eachblocktime">
+        <div class="title">Rescue Date</div>
+        <div class="inputfeild">
+          <ion-datetime [(ngModel)]="clientdata.transRescuerDate" ></ion-datetime>
+        </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Rescue Addreess</div>
+        <div class="inputfeild">
+          <ion-textarea placeholder="Enter Address" class="inputclasstext" [(ngModel)]="clientdata.transRescuerAddress"></ion-textarea>
+        </div>
+      </div>
+      <!-- <div class="eachblock">
+        <div class="title">Images</div>
+        <div class="inputfeild">
+          <ion-button expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
+          <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
+        </div>
+      </div> -->
+      <div class="lastbutton">
+        <ion-button class="btnclass" (click)="updatetranscation()">Update</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

@@ -64,11 +64,11 @@ ion-content{
     width: 100%;
     height: 50px;
     padding: 2%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .eachsectionicon{
-    width: 25%;
-    float: left;
     text-align: center;
     padding: 1% 0px;
     zoom: 1.5;

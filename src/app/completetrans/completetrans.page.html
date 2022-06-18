@@ -1,4 +1,4 @@
--<ion-header>
+<ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -91,23 +91,26 @@
         </div>
       </div>
     </div>
-    <div class="step2" *ngIf="step>=3">
-      <div class="reviewInfo">
-        <div class="heading">Review</div>
-        <div class="eachbasicblock">
-          <div class="infoblock">
-            <div class="infotitle">Rate:</div>
-            <div class="infoinput">{{transdata.transRate}}</div>
-          </div>
+    <div class="step1">
+      <div class="eachblock">
+        <div class="title">Rate</div>
+        <div class="inputfeild">
+          <ion-select class="inputclass" placeholder="Select Rate" [(ngModel)]="clientdata.transRate">
+            <ion-select-option *ngFor="let rate of rates" value="{{rate}}">{{rate}}</ion-select-option>
+          </ion-select>
         </div>
-        <div class="eachbasicblock">
-          <div class="infoblock">
-            <div class="infotitle">Comment:</div>
-            <div class="infoinput">{{transdata.transComment}}</div>
-          </div>
+      </div>
+      <div class="eachblock">
+        <div class="title">Comment</div>
+        <div class="inputfeild">
+          <ion-textarea placeholder="Enter Comments" class="inputclasstext" [(ngModel)]="clientdata.transComment"></ion-textarea>
         </div>
+      </div>
+      <div class="lastbutton">
+        <ion-button class="btnclass" (click)="updatetranscation()">Completed</ion-button>
       </div>
     </div>
   </div>
 </ion-content>
+
 

@@ -16,6 +16,8 @@ export class AppComponent {
     { title: 'History', url: '/transactionlist', icon: 'mail'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'mail'},
     { title: 'Ranking', url: '/ranking', icon: 'mail'},
+    { title: 'Attributes', url: '/attributes', icon: 'mail'},
+    { title: 'Identification', url: '/identification', icon: 'mail'},
   ];
   public rescuerPages = [
     { title: 'Events', url: '/events', icon: 'mail'},

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { RhomepagePage } from './rhomepage.page';
+import { RescusertranlistPage } from './rescusertranlist.page';
 
-describe('RhomepagePage', () => {
-  let component: RhomepagePage;
-  let fixture: ComponentFixture<RhomepagePage>;
+describe('RescusertranlistPage', () => {
+  let component: RescusertranlistPage;
+  let fixture: ComponentFixture<RescusertranlistPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RhomepagePage ],
+      declarations: [ RescusertranlistPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RhomepagePage);
+    fixture = TestBed.createComponent(RescusertranlistPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

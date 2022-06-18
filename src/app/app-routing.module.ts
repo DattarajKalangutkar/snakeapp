@@ -8,14 +8,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'snake',
-    loadChildren: () => import('./snake/snake.module').then( m => m.SnakePageModule)
-  },
-  {
-    path: 'snakedetails/:id',
-    loadChildren: () => import('./snakedetails/snakedetails.module').then( m => m.SnakedetailsPageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
@@ -54,14 +46,6 @@ const routes: Routes = [
   {
     path: 'firstaid',
     loadChildren: () => import('./firstaid/firstaid.module').then( m => m.FirstaidPageModule)
-  },
-  {
-    path: 'rhomepage',
-    loadChildren: () => import('./rhomepage/rhomepage.module').then( m => m.RhomepagePageModule)
-  },
-  {
-    path: 'uhomepage',
-    loadChildren: () => import('./uhomepage/uhomepage.module').then( m => m.UhomepagePageModule)
   },
   {
     path: 'hospital',
@@ -122,6 +106,18 @@ const routes: Routes = [
   {
     path: 'attributes',
     loadChildren: () => import('./attributes/attributes.module').then( m => m.AttributesPageModule)
+  },
+  {
+    path: 'updatetrans/:id',
+    loadChildren: () => import('./updatetrans/updatetrans.module').then( m => m.UpdatetransPageModule)
+  },
+  {
+    path: 'completetrans/:id',
+    loadChildren: () => import('./completetrans/completetrans.module').then( m => m.CompletetransPageModule)
+  },
+  {
+    path: 'rescusertranlist',
+    loadChildren: () => import('./rescusertranlist/rescusertranlist.module').then( m => m.RescusertranlistPageModule)
   },
 ];
 

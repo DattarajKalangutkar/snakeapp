@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" [routerLink]="['/home']">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title >Transcation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullcontent">
+    <div class="filtersection">
+      <div class="btnsection">
+        <ion-button *ngIf="btnToggle" style="background-color:#5260ff" (click)="showFilter('all')">
+          All 
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('1')">
+          Created 
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('2')">
+          Updated 
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#33c51f" (click)="showFilter('3')">
+          Completed
+        </ion-button>
+        <ion-button  *ngIf="!btnToggle" style="background-color:#fff036" (click)="ToggleBtn()">
+          <ion-icon name="filter-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="btnToggle" style="background-color:#fff036" (click)="ToggleBtn()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+        
+      </div>
+    </div>
+    <div class="eachseg" *ngFor="let tran of trans;let i=index;">
+      <h3>Transcation No : {{tran.tranid}}</h3>
+      <div class="custinfo">
+        <h4>Catcher: {{tran.transRescuerId.vName}}</h4>
+        <h4>Phone: {{tran.transRescuerId.vPhone}}</h4>
+      </div>
+      <div class="fullsection">
+        <div class="leftsec">
+          <h4>Date: {{tran.createdDate | date}}</h4>
+          <h4>Time: {{tran.createdDate | date:'shortTime'}}</h4>
+        </div>
+        <div class="rightsec">
+          <h3>Status</h3>
+          <h4>{{tran.transStatus.vName}}</h4>
+        </div>
+      </div>
+      <div class="iconsec">
+        <div class="eachsectionicon" *ngIf="tran.transStatus.iId == '1' || tran.transStatus.iId == '3'">
+          <ion-icon style="color:#890606;" name="pencil-outline" *ngIf="tran.transStatus.iId != '3'" (click)="editorder(tran)"></ion-icon>
+          <ion-icon style="color:#20d720;" name="checkmark-done-outline" *ngIf="tran.transStatus.iId == '3'"></ion-icon>
+        </div>
+        <div class="eachsectionicon">
+          <ion-icon style="color: #4848b5;" name="eye-outline" (click)="vieworder(tran)"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

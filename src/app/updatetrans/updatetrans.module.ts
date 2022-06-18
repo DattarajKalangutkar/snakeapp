@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SnakedetailsPageRoutingModule } from './snakedetails-routing.module';
+import { UpdatetransPageRoutingModule } from './updatetrans-routing.module';
 
-import { SnakedetailsPage } from './snakedetails.page';
+import { UpdatetransPage } from './updatetrans.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SnakedetailsPageRoutingModule
+    UpdatetransPageRoutingModule
   ],
-  declarations: [SnakedetailsPage]
+  declarations: [UpdatetransPage]
 })
-export class SnakedetailsPageModule {}
+export class UpdatetransPageModule {}

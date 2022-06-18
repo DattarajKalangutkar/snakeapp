@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SnakePageRoutingModule } from './snake-routing.module';
+import { RescusertranlistPageRoutingModule } from './rescusertranlist-routing.module';
 
-import { SnakePage } from './snake.page';
+import { RescusertranlistPage } from './rescusertranlist.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SnakePageRoutingModule
+    RescusertranlistPageRoutingModule
   ],
-  declarations: [SnakePage]
+  declarations: [RescusertranlistPage]
 })
-export class SnakePageModule {}
+export class RescusertranlistPageModule {}

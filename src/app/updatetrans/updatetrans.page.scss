@@ -1,0 +1,128 @@
+.loginastittle{
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: monospace;
+    line-height: 1.2rem;
+}
+
+.loginasDiv{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.loginasDiv ion-radio{
+    margin-left: 10px;
+}
+
+.progress{
+    padding: 5% 5%;
+}
+
+.progress .stepscount{
+    display: flex;
+    justify-content: space-around;
+}
+
+.basicInfo{
+    padding: 3%;
+    background: #d0c7c7;
+    margin: 2%;
+}
+
+.heading{
+    text-align: center;
+    line-height: 1;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.eachbasicblock{
+    display: flex;
+    justify-content: space-between;
+    padding: 4% 2% 2% 2%;
+}
+
+.eachbasicblock .infoblock{
+    display: flex;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    justify-content: space-between;
+}
+
+.eachbasicblock .infoblock .infotitle{
+    font-weight: 700;
+}
+
+.eachbasicblock img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.snakeInfo{
+    padding: 3%;
+    background: #cfd97e;
+    margin: 2%;
+}
+
+.reviewInfo{
+    padding: 3%;
+    background: #e58212;
+    margin: 2%;
+}
+
+.eachblock{
+    width: 100%;
+    height: 100px;
+    padding: 2% 5%;
+}
+
+.title{
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: indigo;
+    text-align: center;
+    padding: 2px;
+}
+
+.inputclass{
+    width: auto;
+    height: 50px;
+    border: 2px solid black;
+    border-radius:2%;
+}
+
+.inputclasstext{
+    width: auto;
+    border: 2px solid black;
+    border-radius:2%;
+}
+
+.lastbutton{
+    text-align: center;
+    padding: 11px;
+}
+
+.btnclass
+{
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+    box-shadow: 1px 2px 6px black;
+    color: #d0c7c7;
+    width: 114px;
+    height: 43px;
+    margin: 0% 5%;
+}
+
+.eachblocktime{
+    height: 450px;
+    border: 2px solid #c2d4c9;
+    padding: 2%;
+    margin: 0% 0%;
+    background: #efe2e2;
+}
+
+

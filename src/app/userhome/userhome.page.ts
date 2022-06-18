@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { SnakeService } from '../snake.service';
+
 @Component({
   selector: 'app-userhome',
   templateUrl: './userhome.page.html',
@@ -9,9 +11,12 @@ import { MenuController } from '@ionic/angular';
 })
 export class UserhomePage implements OnInit {
   private _storage: Storage | null = null;
-  constructor(private menu: MenuController,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
+  rescuserId:any;
+  posts:any=[];
+  constructor(private menu: MenuController,private snakeService:SnakeService,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
     this.menu.enable(true);
     this.init();
+    this.getpost();
   }
 
   async init() {
@@ -28,4 +33,13 @@ export class UserhomePage implements OnInit {
     this.router.navigate(['/login']);
   }
 
+
+  getpost()
+  {
+    this.snakeService.getallpost().subscribe((data:any)=>{
+      console.log(data);
+      this.posts=data.rows;
+    });
+
+  }
 }

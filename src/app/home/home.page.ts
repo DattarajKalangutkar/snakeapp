@@ -13,9 +13,11 @@ import { MenuController } from '@ionic/angular';
 export class HomePage implements OnInit {
   private _storage: Storage | null = null;
   rescuserId:any;
+  posts:any=[];
   constructor(private menu: MenuController,private snakeService:SnakeService,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
     this.menu.enable(true);
     this.init();
+    this.getpost();
   }
 
   async init() {
@@ -45,5 +47,14 @@ export class HomePage implements OnInit {
     this.snakeService.activeRescuerLatLong(this.rescuserId,data).subscribe((data:any)=>{
       console.log(data);
     });
+  }
+
+  getpost()
+  {
+    this.snakeService.getallpost().subscribe((data:any)=>{
+      console.log(data);
+      this.posts=data.rows;
+    });
+
   }
 }

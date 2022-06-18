@@ -216,4 +216,21 @@ export class SnakeService {
       catchError(this.handleError('Delete user'))
     );
   }
+
+  postdata(data)
+  {
+    return this.httpClient.post(this.endpoint+'posts/sample.php',data).pipe(
+      tap(_ => console.log("")),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  getallpost()
+  {
+    return this.httpClient.get(this.endpoint+'posts/sample.php').pipe(
+      tap(_ => console.log("")),
+      catchError(this.handleError('Delete user'))
+    );
+
+  }
 }

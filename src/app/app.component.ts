@@ -26,6 +26,7 @@ export class AppComponent {
     { title: 'Hospitals', url: '/hospital', icon: 'mail'},
     { title: 'History', url: '/transactionlist', icon: 'mail'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'mail'},
+    { title: 'Post', url: '/post', icon: 'mail'},
   ];
   client_arr:any = [];
   private _storage: Storage | null = null;

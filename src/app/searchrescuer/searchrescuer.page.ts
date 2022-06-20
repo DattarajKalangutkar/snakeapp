@@ -118,7 +118,7 @@ export class SearchrescuerPage implements OnInit {
     };
 
     this.snakeService.initiateTrans(data).subscribe((data:any)=>{
-      console.log(data);
+      this.router.navigate(['/transactionlist/']);
     });
   }
 }

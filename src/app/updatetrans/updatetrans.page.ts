@@ -24,6 +24,10 @@ export class UpdatetransPage implements OnInit {
     transStatus:"2",
     transImage:""
   };
+
+  image:any;
+  filedata:any;
+  finalImagePath:string = '';
   constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService) {
     this.id = (this.activeRoute.snapshot.paramMap.get('id') !=null) ? this.activeRoute.snapshot.paramMap.get('id'):'';
     this.gettransdetail(this.id);
@@ -43,7 +47,7 @@ export class UpdatetransPage implements OnInit {
   gettransdetail(id)
   {
     this.snakeService.gettranscation(id).subscribe((data:any)=>{
-      this.transdata = data.rows[0];
+      this.transdata = data.rows;
       if(this.transdata.transStatus.iId == 1){
         this.progresscount = 0.3;
         this.step = 1;
@@ -63,7 +67,6 @@ export class UpdatetransPage implements OnInit {
   {
     this.clientdata.transRescuerDate = this.clientdata.transRescuerDate.toLocaleString().replace(/T/g, " ").split("+")[0];
     this.snakeService.updateTranscation(this.id,this.clientdata).subscribe((data:any)=>{
-      console.log(data);
       if(data.flag)
       {
         this.router.navigate(['/rescusertranlist/']);
@@ -71,4 +74,14 @@ export class UpdatetransPage implements OnInit {
     });
   }
 
+  selectedFile(event)
+  {
+    this.filedata = event.target.files[0];
+    const formData = new FormData();
+    formData.append("transactionImage",this.filedata);
+    formData.append("modules","transaction");
+    this.snakeService.uploadImage(formData).subscribe((data:any)=>{
+      this.finalImagePath = this.clientdata.transImage = data.filepath;
+    });
+  }
 }

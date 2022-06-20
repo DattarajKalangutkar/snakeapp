@@ -37,7 +37,11 @@ export class AppComponent {
   async init() {
     const storage = await this.storage.create();
     this._storage = storage;
+  }
+
+  async ngOnInit() {
     let logged = await this.storage.get("loggedin");
+    console.log(logged);
     if(logged == "Rescuser")
     {
       this.rescuerTab = true;

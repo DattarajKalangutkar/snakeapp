@@ -31,7 +31,7 @@ export class CompletetransPage implements OnInit {
   gettransdetail(id)
   {
     this.snakeService.gettranscation(id).subscribe((data:any)=>{
-      this.transdata = data.rows[0];
+      this.transdata = data.rows;
       if(this.transdata.transStatus.iId == 1){
         this.progresscount = 0.3;
         this.step = 1;

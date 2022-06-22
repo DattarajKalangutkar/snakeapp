@@ -118,7 +118,11 @@ const routes: Routes = [
   {
     path: 'rescusertranlist',
     loadChildren: () => import('./rescusertranlist/rescusertranlist.module').then( m => m.RescusertranlistPageModule)
+  },  {
+    path: 'editinfo',
+    loadChildren: () => import('./editinfo/editinfo.module').then( m => m.EditinfoPageModule)
   },
+
 ];
 
 @NgModule({

@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>editinfo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="loginastittle">
+  <div class="eachblock">
+    <div class="title">Address</div>
+    <div class="inputfeild">
+      <ion-input class="inputclass"  ></ion-input>
+    </div>
+  </div>
+  <div class="eachblock">
+    <div class="title">Age</div>
+    <div class="inputfeild">
+      <ion-input class="inputclass"></ion-input>
+    </div>
+  </div>
+  <ion-list radio-group >
+    <div class="title">Gender</div>
+    <ion-item>
+      <ion-label>Male</ion-label>
+      <ion-radio value="male" checked></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Female</ion-label>
+      <ion-radio value="female"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Others</ion-label>
+      <ion-radio value="others" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <div class="eachblock">
+    <div class="title">Certificate</div>
+    <div class="inputfeild">
+      <ion-button expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
+      <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
+      <div class="imgclass">
+        <ion-img width="80" height="80" [src]="finalImagePath"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="eachblock">
+    <div class="title">Experience</div>
+    <div class="inputfeild">
+      <ion-input class="inputclass"  ></ion-input>
+    </div>
+  </div>
+  <div class="eachblock">
+    <div class="title">Achievement</div>
+    <div class="inputfeild">
+      <ion-button expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
+      <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
+      <div class="imgclass">
+        <ion-img width="80" height="80" [src]="finalImagePath"></ion-img>
+      </div>
+    </div>
+  </div>
+  <div class="lastbutton">
+    <ion-button class="btnclass" (click)="submitpost()">Submit</ion-button>
+  </div>
+  </div>
+
+</ion-content>

@@ -34,7 +34,7 @@
     <div class="eachseg" *ngFor="let snake of snakes;let i=index;" (click)="opendetail(snake.id);">
       <h3>Snake Name: {{snake.snakeName}}</h3>
       <div class="custinfo">
-        <h4>Snake Type: {{snake.snakeType}}</h4>
+        <h4>Snake Type: {{snake.snakeType.vName}}</h4>
         <h4>Snake LocalName: {{snake.snakeLocalName}}</h4>
       </div>
       <div class="fullsection">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController,ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +26,7 @@ export class RegisterPage implements OnInit {
   otp2:number;
   otp3:number;
   otp4:number;
-  constructor(private snakeService:SnakeService,private menu: MenuController) {
+  constructor(private snakeService:SnakeService,private menu: MenuController,private toastCtrl: ToastController) {
     this.menu.enable(false);
    }
 
@@ -68,18 +68,47 @@ export class RegisterPage implements OnInit {
 
   steponeregister()
   {
+    console.log(this.clientdata);
+    //validation
+    if(this.clientdata.name =="")
+    {
+      this.presentToast("Please Enter a name");
+      return false;
+    }
+
+    if(this.clientdata.phone == "")
+    {
+      this.presentToast("Please Enter the Phone Number");
+      return false;
+    }
+    else
+    {
+      if(this.clientdata.phone.length != 10)
+      {
+        this.presentToast("Invalid Phone Number");
+        return false;
+      }
+    }
+
+    if(this.clientdata.password != this.clientdata.confirmpassword)
+    {
+      this.presentToast("Password Doesnt Match to Confirm Password");
+      return false;
+    }
+
     this.snakeService.sendotp(this.clientdata.email).subscribe((data:any)=>{
       this.snakeService.sendmail(this.clientdata.email,data.otp).subscribe((send:any)=>{
-        console.log(send);
+        
       });
       if(data.flag)
       {
         this.step = 'step2';
         this.progresscount = 0.6;
+        this.presentToast(data.message);
       }
       else
       {
-        alert(data.message);
+        this.presentToast(data.message);
       }
     });    
   }
@@ -127,9 +156,24 @@ export class RegisterPage implements OnInit {
           {
             this.step = 'step3';
             this.progresscount = 1;
+            this.presentToast(data_verifed.message);
+          }
+          else
+          {
+            this.presentToast(data_verifed.message);
           }
         });
       }
     });
+  }
+
+  async presentToast(msg) {
+    let toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'bottom'
+    });
+  
+    toast.present();
   }
 }

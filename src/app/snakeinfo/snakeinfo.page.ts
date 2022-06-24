@@ -27,6 +27,7 @@ export class SnakeinfoPage implements OnInit {
   {
     this.snakeService.getallsnakes().subscribe((data:any)=>{
       this.originalsnakes = this.snakes = data.rows;
+      console.log(data);
     });
   }
   opendetail(id)
@@ -49,11 +50,11 @@ export class SnakeinfoPage implements OnInit {
     if(identifier == 'all')
       this.snakes = this.originalsnakes;
     else if(identifier == '1')
-      this.snakes = this.snakes.filter((res:any)=>(res.snakeType == 'Venomous'));
+      this.snakes = this.snakes.filter((res:any)=>(res.snakeType.vName == 'Venomous'));
     else if(identifier == '2')
-      this.snakes = this.snakes.filter((res:any)=>(res.snakeType == 'Non Venomous'));
+      this.snakes = this.snakes.filter((res:any)=>(res.snakeType.vName == 'Non Venomous'));
     else
-      this.snakes = this.snakes.filter((res:any)=>(res.snakeType == 'Mildly Venomous'));
+      this.snakes = this.snakes.filter((res:any)=>(res.snakeType.vName == 'Mildly Venomous'));
   }
 
  

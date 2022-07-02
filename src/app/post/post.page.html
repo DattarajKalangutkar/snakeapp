@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title class="title">Post</ion-title>
+    <ion-title>Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,12 +13,13 @@
     <div class="inputfeild">
       <ion-button expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
       <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
+      <div class="lastbutton">
+        <ion-button class="btnclass" (click)="submitpost()">Submit</ion-button>
+      </div>
       <div class="imgclass">
-        <ion-img width="80" height="80" [src]="finalImagePath"></ion-img>
+        <ion-img width="80" height="80" [src]="finalImagePath"></ion-img><br>
       </div>
     </div>
   </div>
-  <div class="lastbutton">
-    <ion-button class="btnclass" (click)="submitpost()">Submit</ion-button>
-  </div>
+  
 </ion-content>

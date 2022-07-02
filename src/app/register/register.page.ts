@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
 import { MenuController,ToastController } from '@ionic/angular';
+// import { exit } from 'process';
 
 @Component({
   selector: 'app-register',
@@ -51,6 +52,7 @@ export class RegisterPage implements OnInit {
   {
     this.filedata = event.target.files[0];
     const formData = new FormData();
+    
     if(this.clientRole == '1')
     {
       formData.append("rescuerImage",this.filedata);
@@ -76,6 +78,12 @@ export class RegisterPage implements OnInit {
       return false;
     }
 
+    if(this.clientdata.username =="")
+    {
+      this.presentToast("Please Enter a username");
+      return false;
+    }
+
     if(this.clientdata.phone == "")
     {
       this.presentToast("Please Enter the Phone Number");
@@ -86,6 +94,21 @@ export class RegisterPage implements OnInit {
       if(this.clientdata.phone.length != 10)
       {
         this.presentToast("Invalid Phone Number");
+        return false;
+      }
+    }
+
+    if(this.clientdata.email == "")
+    {
+      this.presentToast("Please Enter the Email Address");
+      return false;
+    }
+    else
+    {
+      var mailformat = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
+      if(this.clientdata.email == mailformat)
+      {
+        this.presentToast("Enter valid Email");
         return false;
       }
     }

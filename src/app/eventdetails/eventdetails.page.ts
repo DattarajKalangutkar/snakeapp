@@ -25,7 +25,7 @@ export class EventdetailsPage implements OnInit {
   }
 
   async ngOnInit() {
-    await this.find();
+    // await this.find();
     
   }
 
@@ -37,19 +37,19 @@ export class EventdetailsPage implements OnInit {
     });
   }
 
-  async find(){
-    let logged = await this.storage.get("loggedin");
-    console.log(logged);
-    if(logged == "Rescuser")
-    {
-      this.router.navigate(['/home/']);
-    }
-    else
-    {
-      this.router.navigate(['/userhome/']);
-    }
+  // async find(){
+  //   let logged = await this.storage.get("loggedin");
+  //   console.log(logged);
+  //   if(logged == "Rescuser")
+  //   {
+  //     this.router.navigate(['/home/']);
+  //   }
+  //   else
+  //   {
+  //     this.router.navigate(['/userhome/']);
+  //   }
     
-  }
+  // }
  
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 //  import { exit } from 'process';
 
 @Component({
@@ -13,14 +14,26 @@ export class SnakeinfoPage implements OnInit {
   snakes:any = [];
   items:any = [];
   originalsnakes:any = [];
+  loggin:any;
   allsnakedata:any = [];
-  constructor(private snakeService:SnakeService,private router: Router) {
+  constructor(private snakeService:SnakeService,private router: Router,private storage: Storage) {
 
     this.getallsnakes();
    }
 
+   async init() {
+    const storage = await this.storage.create();
+  
+  }
+
    
   ngOnInit() {
+  }
+
+  async ionViewDidEnter()
+  {
+    this.init();
+    this.loggin = await this.storage.get("loggedin");
   }
 
   getallsnakes()
@@ -55,6 +68,18 @@ export class SnakeinfoPage implements OnInit {
       this.snakes = this.snakes.filter((res:any)=>(res.snakeType.vName == 'Non Venomous'));
     else
       this.snakes = this.snakes.filter((res:any)=>(res.snakeType.vName == 'Mildly Venomous'));
+  }
+
+  navigatetohome()
+  {
+    if(this.loggin == "Rescuser")
+    {
+      this.router.navigate(['/home/']);
+    }
+    else
+    {
+      this.router.navigate(['/userhome/']);
+    }
   }
 
  

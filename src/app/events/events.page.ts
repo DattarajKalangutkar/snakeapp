@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
+
 
 
 @Component({
@@ -9,12 +11,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
+  loggin:any;
 
-  constructor(private snakeService:SnakeService,private router: Router) {
+  constructor(private snakeService:SnakeService,private router: Router,private storage: Storage) {
+    this.init();
     this.getallevents();
    }
 
+   async init() {
+    const storage = await this.storage.create();
+  
+  }
+
    alleventsdata:any = [];
+
+   async ionViewDidEnter()
+  {
+    this.init();
+    this.loggin = await this.storage.get("loggedin");
+  }
 
   ngOnInit() {
   }
@@ -29,6 +44,18 @@ export class EventsPage implements OnInit {
   opendetail(id)
   {
     this.router.navigate(['/eventdetails/'+id])
+  }
+
+  navigatetohome()
+  {
+    if(this.loggin == "Rescuser")
+    {
+      this.router.navigate(['/home/']);
+    }
+    else
+    {
+      this.router.navigate(['/userhome/']);
+    }
   }
 
 }

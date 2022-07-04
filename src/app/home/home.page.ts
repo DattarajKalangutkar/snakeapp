@@ -3,7 +3,7 @@ import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
 import { Geolocation } from '@capacitor/geolocation';
-import { MenuController } from '@ionic/angular';
+import { MenuController,ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   private _storage: Storage | null = null;
   rescuserId:any;
   posts:any=[];
-  constructor(private menu: MenuController,private snakeService:SnakeService,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
+  constructor(private toastCtrl: ToastController,private menu: MenuController,private snakeService:SnakeService,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
     this.menu.enable(true);
     this.init();
     this.getpost();
@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
   async init() {
     const storage = await this.storage.create();
     this._storage = storage;
+    this.rescuserId = await this.storage.get('rescuerid');
   }
 
   async ngOnInit() 
@@ -46,15 +47,43 @@ export class HomePage implements OnInit {
 
     this.snakeService.activeRescuerLatLong(this.rescuserId,data).subscribe((data:any)=>{
       console.log(data);
+      if(data.flag)
+      {
+        this.presentToast(data.message);
+      }
     });
   }
 
-  getpost()
+  async getpost()
   {
-    this.snakeService.getallpost().subscribe((data:any)=>{
+    this.rescuserId = await this.storage.get('rescuerid');
+    this.snakeService.getallpost(1,this.rescuserId).subscribe((data:any)=>{
       console.log(data);
       this.posts=data.rows;
     });
+  }
 
+  async presentToast(msg) {
+    let toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'bottom'
+    });
+  
+    toast.present();
+  }
+
+  updatelike(data,index)
+  {
+    var likedata = {
+      "type":"1",
+      "client":this.rescuserId,
+      "postid":data.id
+    };
+    
+    this.snakeService.likepost(likedata).subscribe((data:any)=>{
+      this.posts[index].postLikes = Number(this.posts[index].postLikes)+1;
+      this.posts[index].clicked = true;
+    });
   }
 }

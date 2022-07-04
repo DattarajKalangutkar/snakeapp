@@ -28,6 +28,7 @@ export class UpdatetransPage implements OnInit {
   image:any;
   filedata:any;
   finalImagePath:string = '';
+  isUploaded:boolean = true;
   constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService) {
     this.id = (this.activeRoute.snapshot.paramMap.get('id') !=null) ? this.activeRoute.snapshot.paramMap.get('id'):'';
     this.gettransdetail(this.id);
@@ -81,7 +82,12 @@ export class UpdatetransPage implements OnInit {
     formData.append("transactionImage",this.filedata);
     formData.append("modules","transaction");
     this.snakeService.uploadImage(formData).subscribe((data:any)=>{
-      this.finalImagePath = this.clientdata.transImage = data.filepath;
+      if(data.status)
+      {
+        this.isUploaded = false;
+        //this.presentToast("Profile Pic Uploaded Successfully");
+        this.finalImagePath = this.clientdata.transImage = data.filepath;
+      }
     });
   }
 }

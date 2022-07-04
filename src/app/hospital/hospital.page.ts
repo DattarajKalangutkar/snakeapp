@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -9,14 +10,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./hospital.page.scss'],
 })
 export class HospitalPage implements OnInit {
-
-  constructor(private snakeService:SnakeService,private router: Router) { 
+  loggin:any;
+  constructor(private snakeService:SnakeService,private router: Router,private storage: Storage) { 
     this.getallhospitals();
   }
 
   allhospitaldata:any = [];
 
   ngOnInit() {
+  }
+
+  async init() {
+    const storage = await this.storage.create();
+  
+  }
+
+  async ionViewDidEnter()
+  {
+    this.init();
+    this.loggin = await this.storage.get("loggedin");
   }
 
   getallhospitals()
@@ -30,6 +42,18 @@ export class HospitalPage implements OnInit {
   opendetail(id)
   {
     this.router.navigate(['/hospitaldetail/'+id])
+  }
+
+  navigatetohome()
+  {
+    if(this.loggin == "Rescuser")
+    {
+      this.router.navigate(['/home/']);
+    }
+    else
+    {
+      this.router.navigate(['/userhome/']);
+    }
   }
 
 }

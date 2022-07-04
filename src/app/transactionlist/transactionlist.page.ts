@@ -25,6 +25,12 @@ export class TransactionlistPage implements OnInit {
     this._storage = storage;
   }
 
+  async ionViewDidEnter()
+  {
+    this.init();
+    this.gettranscationlist();
+  }
+
   async ngOnInit() 
   {
     this.userid = await this.storage.get('userid');

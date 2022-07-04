@@ -63,6 +63,8 @@ export class RegisterPage implements OnInit {
       formData.append("userImage",this.filedata);
       formData.append("modules","user");
     }
+
+
     this.snakeService.uploadImage(formData).subscribe((data:any)=>{
       this.finalImagePath = data.filepath;
     });
@@ -106,7 +108,7 @@ export class RegisterPage implements OnInit {
     else
     {
       var mailformat = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
-      if(this.clientdata.email == mailformat)
+      if(this.clientdata.email.Match(mailformat) == false)
       {
         this.presentToast("Enter valid Email");
         return false;

@@ -46,6 +46,14 @@ export class SnakeService {
     );
   }
 
+  updaterClient(path,data,id)
+  {
+    return this.httpClient.put(this.endpoint+'auth/'+path+"?id="+id,data).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
   sendotp(email)
   {
     var data = {
@@ -225,12 +233,19 @@ export class SnakeService {
     );
   }
 
-  getallpost()
+  getallpost(type,client)
   {
-    return this.httpClient.get(this.endpoint+'posts/sample.php').pipe(
+    return this.httpClient.get(this.endpoint+'posts/sample.php?type='+type+'&client='+client).pipe(
       tap(_ => console.log("")),
       catchError(this.handleError('Delete user'))
     );
+  }
 
+  likepost(data)
+  {
+    return this.httpClient.post(this.endpoint+'posts/likepost.php',data).pipe(
+      tap(_ => console.log("")),
+      catchError(this.handleError('Delete user'))
+    );
   }
 }

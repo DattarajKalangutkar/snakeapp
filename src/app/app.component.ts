@@ -13,7 +13,7 @@ export class AppComponent {
     { title: 'First Aid', url: '/firstaid', icon: 'mail'},
     { title: 'wild Life', url: '/wildlife', icon: 'mail'},
     { title: 'Hospitals', url: '/hospital', icon: 'mail'},
-    { title: 'History', url: '/transactionlist', icon: 'mail'},
+    { title: 'History', url: '/rescusertranlist', icon: 'mail'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'mail'},
     { title: 'Ranking', url: '/ranking', icon: 'mail'},
     { title: 'Attributes', url: '/attributes', icon: 'mail'},
@@ -24,7 +24,7 @@ export class AppComponent {
     { title: 'First Aid', url: '/firstaid', icon: 'mail'},
     { title: 'wild Life', url: '/wildlife', icon: 'mail'},
     { title: 'Hospitals', url: '/hospital', icon: 'mail'},
-    { title: 'History', url: '/transactionlist', icon: 'mail'},
+    { title: 'History', url: '/rescusertranlist', icon: 'mail'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'mail'},
     { title: 'Post', url: '/post', icon: 'mail'},
   ];

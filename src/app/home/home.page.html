@@ -1,4 +1,4 @@
-<ion-header>
+ <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button>
@@ -24,13 +24,16 @@
 
 <ion-content>
   <ion-searchbar></ion-searchbar>
-  <ion-card *ngFor="let post of posts;">
+  <ion-card *ngFor="let post of posts;let i=index;">
     <ion-card-header>
       <img src="{{post.postImage}}"/>
     </ion-card-header>
     <ion-card-content>
       <div class="iconsec">
-        <div class="eachsectionicon">0 <ion-icon name="thumbs-up-outline"></ion-icon></div>
+        <div class="eachsectionicon">{{post.postLikes}} 
+          <ion-icon name="heart" *ngIf="post.clicked"></ion-icon> 
+          <ion-icon name="heart-outline" *ngIf="!post.clicked" (click)="updatelike(post,i);"></ion-icon>
+        </div>
         <div class="eachsectionicon">
           <ion-icon name="share-social-outline"></ion-icon>
         </div>

@@ -27,6 +27,12 @@ export class RegisterPage implements OnInit {
   otp2:number;
   otp3:number;
   otp4:number;
+
+  isUploaded:boolean = true;
+
+  primary_key:string = '';
+
+
   constructor(private snakeService:SnakeService,private menu: MenuController,private toastCtrl: ToastController) {
     this.menu.enable(false);
    }
@@ -63,14 +69,20 @@ export class RegisterPage implements OnInit {
       formData.append("userImage",this.filedata);
       formData.append("modules","user");
     }
+
+
     this.snakeService.uploadImage(formData).subscribe((data:any)=>{
-      this.finalImagePath = data.filepath;
+      if(data.status)
+      {
+        this.isUploaded = false;
+        this.presentToast("Profile Pic Uploaded Successfully");
+        this.finalImagePath = data.filepath;
+      }
     });
   }
 
   steponeregister()
   {
-    console.log(this.clientdata);
     //validation
     if(this.clientdata.name =="")
     {
@@ -105,8 +117,11 @@ export class RegisterPage implements OnInit {
     }
     else
     {
-      var mailformat = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
-      if(this.clientdata.email == mailformat)
+      if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.clientdata.email))
+      {
+
+      }
+      else
       {
         this.presentToast("Enter valid Email");
         return false;
@@ -119,21 +134,61 @@ export class RegisterPage implements OnInit {
       return false;
     }
 
-    this.snakeService.sendotp(this.clientdata.email).subscribe((data:any)=>{
-      this.snakeService.sendmail(this.clientdata.email,data.otp).subscribe((send:any)=>{
-        
-      });
-      if(data.flag)
+    var data = {};
+    var path = '';
+    if(this.clientRole == '1')
+    {
+      data = {
+        "rescuerName":this.clientdata.name,
+        "rescuerPhone":this.clientdata.phone,
+        "rescuerUsername":this.clientdata.username,
+        "rescuerPassword":this.clientdata.password,
+        "rescuerRoleId":1,
+        "rescuerEmail":this.clientdata.email,
+        "rescuerImage":this.finalImagePath,
+        "rescuerVerification":0,
+        "rescuerStatus":"0"
+      };
+      path = "rescuerRegister.php";
+    }
+    else
+    {
+      data = {
+        "userName":this.clientdata.name,
+        "userPhone":this.clientdata.phone,
+        "userUsername":this.clientdata.username,
+        "userPassword":this.clientdata.password,
+        "userRoleId":2,
+        "userEmail":this.clientdata.email,
+        "userImage":this.finalImagePath,
+        "userStatus":"0"
+      };
+      path = "userRegister.php";
+    }
+
+    this.snakeService.registerClient(path,data).subscribe((data_verifed:any)=>{
+      if(data_verifed.error)
       {
-        this.step = 'step2';
-        this.progresscount = 0.6;
-        this.presentToast(data.message);
+        this.presentToast(data_verifed.message);
       }
       else
       {
-        this.presentToast(data.message);
+        this.primary_key  = data_verifed.id;
+        this.snakeService.sendotp(this.clientdata.email).subscribe((data:any)=>{
+          this.snakeService.sendmail(this.clientdata.email,data.otp).subscribe((send:any)=>{});
+            if(data.flag)
+            {
+              this.step = 'step2';
+              this.progresscount = 0.6;
+              this.presentToast(data.message);
+            }
+            else
+            {
+              this.presentToast(data.message);
+            }
+        });    
       }
-    });    
+    });   
   }
 
   steptworegister()
@@ -169,12 +224,11 @@ export class RegisterPage implements OnInit {
       };
       path = "userRegister.php";
     }
-
     let finalotp = this.otp1+""+this.otp2+""+this.otp3+""+this.otp4;
     this.snakeService.verifyotp(this.clientdata.email,finalotp).subscribe((data_sendotp:any)=>{
       if(data_sendotp.flag)
       {
-        this.snakeService.registerClient(path,data).subscribe((data_verifed:any)=>{
+        this.snakeService.updaterClient(path,data,this.primary_key).subscribe((data_verifed:any)=>{
           if(data_verifed.flag)
           {
             this.step = 'step3';

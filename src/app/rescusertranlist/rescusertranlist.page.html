@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button fill="solid" (click)="navigatetohome();">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title >Transcation</ion-title>
+    <ion-title >Transaction</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -52,9 +54,6 @@
         <div class="eachsectionicon" *ngIf="tran.transStatus.iId == '1' || tran.transStatus.iId == '3'">
           <ion-icon style="color:#890606;" name="pencil-outline" *ngIf="tran.transStatus.iId != '3'" (click)="editorder(tran)"></ion-icon>
           <ion-icon style="color:#20d720;" name="checkmark-done-outline" *ngIf="tran.transStatus.iId == '3'"></ion-icon>
-        </div>
-        <div class="eachsectionicon">
-          <ion-icon style="color: #4848b5;" name="eye-outline" (click)="vieworder(tran)"></ion-icon>
         </div>
       </div>
     </div>

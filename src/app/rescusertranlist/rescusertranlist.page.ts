@@ -17,6 +17,7 @@ export class RescusertranlistPage implements OnInit {
   trans:any = [];
   items:any = [];
   originaltrans:any = [];
+  loggin:any;
   constructor(private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
     this.init();
   }
@@ -24,6 +25,14 @@ export class RescusertranlistPage implements OnInit {
   async init() {
     const storage = await this.storage.create();
     this._storage = storage;
+  }
+
+  async ionViewDidEnter()
+  {
+    this.init();
+    this.rescuerid = await this.storage.get('rescuerid');
+    this.loggin = await this.storage.get("loggedin");
+    this.gettranscationlist();
   }
 
   async ngOnInit() 
@@ -38,7 +47,6 @@ export class RescusertranlistPage implements OnInit {
       if(data.count > 0)
       {
         this.originaltrans = this.trans = data.rows;
-        console.log(this.trans);
       }
     });
   }
@@ -73,4 +81,17 @@ export class RescusertranlistPage implements OnInit {
   {
     this.router.navigate(['/updatetrans/'+data.id]);
   }
+ 
+  navigatetohome()
+  {
+    if(this.loggin == "Rescuser")
+    {
+      this.router.navigate(['/home/']);
+    }
+    else
+    {
+      this.router.navigate(['/userhome/']);
+    }
+  }
+
 }

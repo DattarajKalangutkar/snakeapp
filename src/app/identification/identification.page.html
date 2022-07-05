@@ -5,43 +5,48 @@
     </ion-buttons>
     <ion-title>Identification</ion-title>
   </ion-toolbar>
-</ion-header>
+
+  <div class="eachblock">
+    <div class="title">Upload Image</div>
+    <div class="inputfeild">
+      <ion-button expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
+      <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
+      <div class="lastbutton">
+        <ion-button class="btnclass" (click)="submitpost()">Submit</ion-button>
+      </div>
+      <div class="imgclass">
+        <ion-img width="80" height="80" [src]="finalImagePath"></ion-img><br>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+<div class="title">Add Attributes</div>
+<div class="container">
+  <ion-button  routerLink="/attributes">
+    <ion-icon name="add"></ion-icon>
+    <ion-label>Add Attributes</ion-label>
+  </ion-button>
+</div>
+  
+
+  </ion-header>
   
   <ion-content>
-    <div>
-      <ion-tab-bar>
-        <ion-buttons>
-          <input type="file" >
-        </ion-buttons>
-        <ion-buttons  routerLink="/attributes">
-          <ion-icon name="add"></ion-icon>
-          <ion-label>Add Attributes</ion-label>
-        </ion-buttons>
-      </ion-tab-bar>
-    </div>
     
-    <div class="thumbnail">
-      <li>
-        <a href="#slide1"><img src="/assets/snake1.jpg"/></a>
-      </li>
-    </div>
-    <div class="thumbnail">
-      <li>
-        <a href="#slide1"><img src="/assets/snake2.jpg"/></a>
-      </li>
-    </div>
-    <div class="thumbnail">
-      <li>
-        <a href="#slide1"><img src="/assets/snake3.jpg"/></a>
-      </li>
-    </div>
-    <div class="thumbnail">
-      <li>
-        <a href="#slide1"><img src="/assets/snake4.jpg"/></a>
-      </li>
-    </div>
-      
-  
+    
   </ion-content>
-  
-  
+<!--
+  <div>
+    <ion-tab-bar>
+      <ion-buttons>
+        <input type="file" >
+      </ion-buttons>
+      <ion-buttons  routerLink="/attributes">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>Add Attributes</ion-label>
+      </ion-buttons>
+    </ion-tab-bar>
+  </div>
+  -->

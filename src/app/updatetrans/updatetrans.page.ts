@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
+import { MenuController,ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-updatetrans',
@@ -29,7 +30,7 @@ export class UpdatetransPage implements OnInit {
   filedata:any;
   finalImagePath:string = '';
   isUploaded:boolean = true;
-  constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService) {
+  constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService,private toastCtrl: ToastController) {
     this.id = (this.activeRoute.snapshot.paramMap.get('id') !=null) ? this.activeRoute.snapshot.paramMap.get('id'):'';
     this.gettransdetail(this.id);
     this.getsnake();
@@ -85,9 +86,19 @@ export class UpdatetransPage implements OnInit {
       if(data.status)
       {
         this.isUploaded = false;
-        //this.presentToast("Profile Pic Uploaded Successfully");
+        this.presentToast("Profile Pic Uploaded Successfully");
         this.finalImagePath = this.clientdata.transImage = data.filepath;
       }
     });
+  }
+
+  async presentToast(msg) {
+    let toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'bottom'
+    });
+  
+    toast.present();
   }
 }

@@ -26,6 +26,12 @@ export class HomePage implements OnInit {
     this.rescuserId = await this.storage.get('rescuerid');
   }
 
+  async ionViewDidEnter()
+  {
+    this.init();
+    this.menu.enable(true);
+  }
+  
   async ngOnInit() 
   {
     this.rescuserId = await this.storage.get('rescuerid');

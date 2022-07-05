@@ -9,24 +9,23 @@ export class AppComponent {
   userTab:boolean = false;
   rescuerTab:boolean = false;
   public userPages = [
-    { title: 'Events', url: '/events', icon: 'mail'},
-    { title: 'First Aid', url: '/firstaid', icon: 'mail'},
-    { title: 'wild Life', url: '/wildlife', icon: 'mail'},
-    { title: 'Hospitals', url: '/hospital', icon: 'mail'},
-    { title: 'History', url: '/rescusertranlist', icon: 'mail'},
-    { title: 'Snake Info', url: '/snakeinfo', icon: 'mail'},
-    { title: 'Ranking', url: '/ranking', icon: 'mail'},
-    { title: 'Attributes', url: '/attributes', icon: 'mail'},
-    { title: 'Identification', url: '/identification', icon: 'mail'},
+    { title: 'Events', url: '/events', icon: 'globe'},
+    { title: 'First Aid', url: '/firstaid', icon: 'medkit'},
+    { title: 'wild Life', url: '/wildlife', icon: 'bug'},
+    { title: 'Hospitals', url: '/hospital', icon: 'add-circle'},
+    { title: 'History', url: '/rescusertranlist', icon: 'speedometer'},
+    { title: 'Snake Info', url: '/snakeinfo', icon: 'planet'},
+    { title: 'Ranking', url: '/ranking', icon: 'ribbon'},
+    { title: 'Identification', url: '/identification', icon: 'finger-print'},
   ];
   public rescuerPages = [
-    { title: 'Events', url: '/events', icon: 'mail'},
-    { title: 'First Aid', url: '/firstaid', icon: 'mail'},
-    { title: 'wild Life', url: '/wildlife', icon: 'mail'},
-    { title: 'Hospitals', url: '/hospital', icon: 'mail'},
-    { title: 'History', url: '/rescusertranlist', icon: 'mail'},
-    { title: 'Snake Info', url: '/snakeinfo', icon: 'mail'},
-    { title: 'Post', url: '/post', icon: 'mail'},
+    { title: 'Events', url: '/events', icon: 'globe'},
+    { title: 'First Aid', url: '/firstaid', icon: 'medkit'},
+    { title: 'wild Life', url: '/wildlife', icon: 'bug'},
+    { title: 'Hospitals', url: '/hospital', icon: 'add-circle'},
+    { title: 'History', url: '/rescusertranlist', icon: 'speedometer'},
+    { title: 'Snake Info', url: '/snakeinfo', icon: 'planet'},
+    { title: 'Post', url: '/post', icon: 'images'},
   ];
   client_arr:any = [];
   private _storage: Storage | null = null;

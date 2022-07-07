@@ -11,12 +11,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PostPage implements OnInit {
   private _storage: Storage | null = null;
   rescuerid:any;
+  loggin:any;
 
   image:any;
   filedata:any;
   finalImagePath:string = '';
   constructor(private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) { 
     this.init();
+  }
+
+  
+
+   async ionViewDidEnter()
+  {
+    this.init();
+    this.loggin = await this.storage.get("loggedin");
   }
   ngOnInit() 
   {
@@ -56,6 +65,18 @@ export class PostPage implements OnInit {
     this.snakeService.postdata(data).subscribe((data)=>{
       this.router.navigate(['/home']);
     });
+  }
+
+  navigatetohome()
+  {
+    if(this.loggin == "Rescuser")
+    {
+      this.router.navigate(['/home/']);
+    }
+    else
+    {
+      this.router.navigate(['/userhome/']);
+    }
   }
 
 }

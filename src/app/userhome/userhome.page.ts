@@ -26,6 +26,12 @@ export class UserhomePage implements OnInit {
     this.userId = await this.storage.get("userid");
   }
 
+  async ionViewDidEnter()
+  {
+    this.init();
+    this.menu.enable(true);
+  }
+
   ngOnInit() 
   {
 
@@ -40,8 +46,8 @@ export class UserhomePage implements OnInit {
 
   async getpost()
   {
-    this.rescuserId = await this.storage.get('userid');
-    this.snakeService.getallpost(2,'userid').subscribe((data:any)=>{
+    this.userId = await this.storage.get('userid');
+    this.snakeService.getallpost(2,this.userId).subscribe((data:any)=>{
       console.log(data);
       this.posts=data.rows;
     });

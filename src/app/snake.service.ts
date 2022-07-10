@@ -22,6 +22,23 @@ export class SnakeService {
     };
   }  
 
+
+  getsnakealgo(data)
+  {
+    return this.httpClient.post(this.endpoint+'algo/mainalgo.php',data).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  getallmaster(type)
+  {
+    return this.httpClient.get(this.endpoint+'master/sample.php?modules='+type).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
   getallsnakes() 
   {
     return this.httpClient.get(this.endpoint+'master/sample.php?modules=snake').pipe(

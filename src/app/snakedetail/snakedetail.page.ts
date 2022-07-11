@@ -9,7 +9,14 @@ import { SnakeService } from '../snake.service';
 })
 export class SnakedetailPage implements OnInit {
   id:any = '';
-  data:any = {};
+  data:any = {
+    "name":'',
+    "localname":'',
+    "type":"",
+    "color":'',
+    "headshpae":"",
+    "image":""
+  };
   constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService) {
     this.id = (this.activeRoute.snapshot.paramMap.get('id') !=null) ? this.activeRoute.snapshot.paramMap.get('id'):'';
     this.getdetailsnake(this.id);
@@ -21,7 +28,15 @@ export class SnakedetailPage implements OnInit {
   getdetailsnake(id)
   {
     this.snakeService.getsnakedetail(id).subscribe((data:any)=>{
-      this.data = data.rows;
+      let snakedata = data.rows;
+      this.data = {
+        "name":snakedata.snakeName,
+        "localname":snakedata.snakeLocalName,
+        "type":snakedata.snakeType.vName,
+        "color":snakedata.snakeColor.vName,
+        "headshpae":snakedata.snakeHeadShape.vName,
+        "image":snakedata.snakeImage
+      }
       console.log(this.data);
     });
   }

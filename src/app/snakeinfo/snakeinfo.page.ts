@@ -17,9 +17,8 @@ export class SnakeinfoPage implements OnInit {
   loggin:any;
   allsnakedata:any = [];
   constructor(private snakeService:SnakeService,private router: Router,private storage: Storage) {
-
     this.getallsnakes();
-   }
+  }
 
    async init() {
     const storage = await this.storage.create();
@@ -40,7 +39,6 @@ export class SnakeinfoPage implements OnInit {
   {
     this.snakeService.getallsnakes().subscribe((data:any)=>{
       this.originalsnakes = this.snakes = data.rows;
-      console.log(data);
     });
   }
   opendetail(id)

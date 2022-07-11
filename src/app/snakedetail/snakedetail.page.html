@@ -1,19 +1,19 @@
-<!-- Default back button -->
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-title>Snake Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="fullcontent">
   <h4>Name: {{data.snakeName}}</h4>
   <h4>LocalName: {{data.snakeLocalName}}</h4>
-  <h4>Snake Type: {{data.snakeType.vName}}</h4> 
-  <h4>Snake Color: {{data.snakeColor.vName}}</h4> -->
+  <!-- <h4>Snake Type: {{data.snakeType.vName}}</h4>  -->
+  <!-- <h4>Snake Color: {{data.snakeColor.vName}}</h4> 
    <h4>Snake Size: {{data.snakeSize.vName}}</h4>
-  <h4>Snake Headshape: {{data.snakeHeadShape.vName}}</h4> -->
+  <h4>Snake Headshape: {{data.snakeHeadShape.vName}}</h4>  -->
    <img src="{{data.snakeImage}}" width="300" height="300"/>
 
 </ion-content>

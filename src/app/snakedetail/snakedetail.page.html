@@ -7,12 +7,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="fullcontent">
-  <h4>Name: {{data.name}}</h4>
-  <h4>LocalName: {{data.localname}}</h4>
-  <h4>Snake Type: {{data.type}}</h4> 
-  <h4>Snake Color: {{data.color}}</h4>
-  <h4>Snake Headshape: {{data.headshpae}}</h4>
-  <img src="{{data.image}}" width="300" height="300"/>
+<ion-content>
+  <div class="fullcontent">
+    <div class="img">
+      <img src="{{data.image}}" width="300" height="300" class="imgClass"/>
+    </div>
+    <div class="info">
+      <div class="infodetail">
+        <h5>Name : </h5>
+        <p>{{data.name}}</p>
+      </div>
+      <div class="infodetail">
+        <h5>Snake Type : </h5>
+        <p>{{data.type}}</p>
+      </div>
+      <div class="infodetail">
+        <h5>Snake Color : </h5>
+        <p>{{data.color}}</p>
+      </div>
+      <div class="infodetail">
+        <h5>Snake Headshape : </h5>
+        <p>{{data.headshpae}}</p>
+      </div>
+    </div>
+  </div>
 </ion-content>
 

@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./transaction-detail/transaction-detail.module').then( m => m.TransactionDetailPageModule)
   },
   {
-    path: 'achivement',
+    path: 'achivement/:id',
     loadChildren: () => import('./achivement/achivement.module').then( m => m.AchivementPageModule)
   },
   {
@@ -118,7 +118,8 @@ const routes: Routes = [
   {
     path: 'rescusertranlist',
     loadChildren: () => import('./rescusertranlist/rescusertranlist.module').then( m => m.RescusertranlistPageModule)
-  },  {
+  },
+  {
     path: 'editinfo',
     loadChildren: () => import('./editinfo/editinfo.module').then( m => m.EditinfoPageModule)
   },

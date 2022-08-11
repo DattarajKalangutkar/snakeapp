@@ -7,9 +7,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="fullcontent">
-  <h4>Name: {{data.eventName}}</h4>
-  <h4>Description: {{data.eventDescription}}</h4>
-  <img src="{{data.eventsImage}}" width="300" height="300"/>
+<ion-content>
+  <div class="fullcontent">
+    <div class="img">
+      <img src="{{data.eventsImage}}" width="300" height="300" class="imgClass"/>
+    </div>
+    <div class="info">
+      <div class="infodetail">
+        <h5>Name : </h5>
+        <p>{{data.eventName}}</p>
+      </div>
+      <div class="infodetail">
+        <h5>Snake Type : </h5>
+        <p>{{data.eventDescription}}</p>
+      </div>
 
+    </div>
+  </div>
 </ion-content>

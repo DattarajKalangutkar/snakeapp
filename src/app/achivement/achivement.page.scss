@@ -13,7 +13,6 @@ img {
 
 .points{
     margin: 15px;
-    display: flex;
     justify-content: space-between;
 }
 
@@ -24,6 +23,7 @@ img {
     font-family: monospace;
     color: #fff;
     box-shadow: 5px 10px #271b1ba6;
+    margin: 30px;
 }
 
 .points .block .title

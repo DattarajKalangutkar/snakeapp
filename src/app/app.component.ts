@@ -13,7 +13,7 @@ export class AppComponent {
     { title: 'First Aid', url: '/firstaid', icon: 'medkit'},
     { title: 'wild Life', url: '/wildlife', icon: 'bug'},
     { title: 'Hospitals', url: '/hospital', icon: 'add-circle'},
-    { title: 'History', url: '/rescusertranlist', icon: 'speedometer'},
+    { title: 'History', url: '/transactionlist', icon: 'speedometer'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'planet'},
     { title: 'Ranking', url: '/ranking', icon: 'ribbon'},
     { title: 'Identification', url: '/identification', icon: 'finger-print'},
@@ -23,7 +23,7 @@ export class AppComponent {
     { title: 'First Aid', url: '/firstaid', icon: 'medkit'},
     { title: 'wild Life', url: '/wildlife', icon: 'bug'},
     { title: 'Hospitals', url: '/hospital', icon: 'add-circle'},
-    { title: 'History', url: '/rescusertranlist', icon: 'speedometer'},
+    { title: 'History', url: '/transactionlist', icon: 'speedometer'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'planet'},
     { title: 'Post', url: '/post', icon: 'images'},
   ];

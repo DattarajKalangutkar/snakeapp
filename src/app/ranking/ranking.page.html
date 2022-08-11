@@ -5,29 +5,17 @@
         <ion-icon name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title >Post</ion-title>
+    <ion-title >Ranking</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
   <div class="fullcontent">
-    <div class="eachseg" (click)="vieworder();">
+    <div class="eachseg" *ngFor="let rank of alltoprescuers;let i=index;" (click)="opendetail(rank.id);">
       <div class="custinfo">
-        <h4>Name:shripad</h4>
-        <h4 id="a">Points:200pts</h4>
-      </div>
-    </div>
-    <div class="eachseg" (click)="vieworder();">
-      <div class="custinfo">
-        <h4>Name:khushi</h4>
-        <h4 id="a">Points:180pts</h4>
-      </div>
-    </div>
-    <div class="eachseg" (click)="vieworder();">
-      <div class="custinfo">
-        <h4>Name:Anushree</h4>
-        <h4 id="a">Points:100pts</h4>
+        <h4>Name: {{rank.rescuerName}}</h4>
+        <h4>Points: {{rank.rescuerPoints}}</h4>
       </div>
     </div>
   </div>

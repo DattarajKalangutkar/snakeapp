@@ -265,4 +265,20 @@ export class SnakeService {
       catchError(this.handleError('Delete user'))
     );
   }
+
+  gettoprescuers()
+  {
+    return this.httpClient.get(this.endpoint+'rescuer/topranking.php').pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
+
+  gettoprescuerdetail(id) 
+  {
+    return this.httpClient.get(this.endpoint+'rescuer/topranking.php?id='+id).pipe(
+      tap(_ => console.log()),
+      catchError(this.handleError('Delete user'))
+    );
+  }
 }

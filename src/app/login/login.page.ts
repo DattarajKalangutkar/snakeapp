@@ -12,8 +12,8 @@ import { MenuController} from '@ionic/angular';
 export class LoginPage implements OnInit {
   private _storage: Storage | null = null;
   clientRole:any = '1';
-  username:string = '9545366928';
-  userpass:string = '321';
+  username:string = '';
+  userpass:string = '';
   constructor(private menu: MenuController,private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
     this.menu.enable(false);
     this.init();
@@ -93,5 +93,10 @@ export class LoginPage implements OnInit {
         }
       });
     }
+  }
+
+  signup()
+  {
+    this.router.navigate(['/register'],{state:{data:this.clientRole}});
   }
 }

@@ -12,7 +12,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class EventsPage implements OnInit {
   loggin:any;
-
+  alleventsdata:any = [];
   constructor(private snakeService:SnakeService,private router: Router,private storage: Storage) {
     this.init();
     this.getallevents();
@@ -23,9 +23,9 @@ export class EventsPage implements OnInit {
   
   }
 
-   alleventsdata:any = [];
+  
 
-   async ionViewDidEnter()
+  async ionViewDidEnter()
   {
     this.init();
     this.loggin = await this.storage.get("loggedin");

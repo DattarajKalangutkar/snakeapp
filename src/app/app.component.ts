@@ -16,7 +16,7 @@ export class AppComponent {
     { title: 'History', url: '/transactionlist', icon: 'speedometer'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'planet'},
     { title: 'Ranking', url: '/ranking', icon: 'ribbon'},
-    { title: 'Identification', url: '/identification', icon: 'finger-print'},
+    { title: 'Identification', url: '/attributes', icon: 'finger-print'},
   ];
   public rescuerPages = [
     { title: 'Events', url: '/events', icon: 'globe'},

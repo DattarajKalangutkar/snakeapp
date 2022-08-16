@@ -35,7 +35,8 @@ export class RegisterPage implements OnInit {
 
   constructor(private snakeService:SnakeService,private menu: MenuController,private toastCtrl: ToastController) {
     this.menu.enable(false);
-   }
+    this.clientRole = history.state.data;
+  }
 
   ngOnInit() {
   }
@@ -58,7 +59,6 @@ export class RegisterPage implements OnInit {
   {
     this.filedata = event.target.files[0];
     const formData = new FormData();
-    
     if(this.clientRole == '1')
     {
       formData.append("rescuerImage",this.filedata);

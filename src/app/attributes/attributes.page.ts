@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
+import { Storage } from '@ionic/storage-angular';
 @Component({
   selector: 'app-attributes',
   templateUrl: './attributes.page.html',
   styleUrls: ['./attributes.page.scss'],
 })
 export class AttributesPage implements OnInit {
-
+  loggin:any;
   master_data:any = {
     "snaketype":[],
     "color":[],
@@ -27,11 +28,21 @@ export class AttributesPage implements OnInit {
   };
 
   snakename:any = [];
-  constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService) {
+  constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService,private storage: Storage) {
     this.getallmaster();
   }
 
   ngOnInit() {
+  }
+
+  async init() {
+    const storage = await this.storage.create();
+  }
+
+  async ionViewDidEnter()
+  {
+    this.init();
+    this.loggin = await this.storage.get("loggedin");
   }
 
   async getallmaster()
@@ -56,5 +67,17 @@ export class AttributesPage implements OnInit {
         this.snakename = data.snakes;
       }
     });
+  }
+
+  navigatetohome()
+  {
+    if(this.loggin == "Rescuser")
+    {
+      this.router.navigate(['/home/']);
+    }
+    else
+    {
+      this.router.navigate(['/userhome/']);
+    }
   }
 }

@@ -86,10 +86,10 @@
         <div class="eachblock">
           <div class="title">OTP</div>
           <div class="inputfeildotp">
-            <ion-input class="otpinputclass" [(ngModel)]="otp1"></ion-input>
-            <ion-input class="otpinputclass" [(ngModel)]="otp2"></ion-input>
-            <ion-input class="otpinputclass" [(ngModel)]="otp3"></ion-input>
-            <ion-input class="otpinputclass" [(ngModel)]="otp4"></ion-input>
+            <ion-input type="number" class="otpinputclass" [(ngModel)]="otp1" #Field1 (keyup)="gotoNextField(Field2)"></ion-input>
+            <ion-input type="number" class="otpinputclass" [(ngModel)]="otp2" #Field2 (keyup)="gotoNextField(Field3)"></ion-input>
+            <ion-input type="number" class="otpinputclass" [(ngModel)]="otp3" #Field3 (keyup)="gotoNextField(Field4)"></ion-input>
+            <ion-input type="number" class="otpinputclass" [(ngModel)]="otp4" #Field4></ion-input>
           </div>
         </div>
         <div class="lastbutton">

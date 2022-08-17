@@ -41,6 +41,11 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
+  gotoNextField(nextElement)
+  {
+    nextElement.setFocus();
+  }
+
   ionViewWillEnter()
   {
     this.step = 'step1';

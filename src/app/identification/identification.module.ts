@@ -8,12 +8,14 @@ import { IdentificationPageRoutingModule } from './identification-routing.module
 
 import { IdentificationPage } from './identification.page';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    IdentificationPageRoutingModule
+    IdentificationPageRoutingModule,
   ],
   declarations: [IdentificationPage]
 })

@@ -4,7 +4,7 @@ import { Geolocation } from '@capacitor/geolocation';
 import { SnakeService } from '../snake.service';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-searchrescuer',
@@ -27,7 +27,7 @@ export class SearchrescuerPage implements OnInit {
   rescuserId:string = '';
   userId:any;
 
-  constructor(private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
+  constructor(private alertController:AlertController,private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
     this.init();
   }
 
@@ -78,7 +78,7 @@ export class SearchrescuerPage implements OnInit {
           lat: this.currentlat,
           lng: this.currentlong,
         },
-        zoom: 15,
+        zoom: 8,
       },
     });
 
@@ -106,6 +106,30 @@ export class SearchrescuerPage implements OnInit {
         title:this.rescuserlist[i].rescuerName+"_"+this.rescuserlist[i].id,
       });
     }
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Confirm',
+      message: 'Do You Want to Initiate with this Rescuer?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.initiateTrans();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   initiateTrans()

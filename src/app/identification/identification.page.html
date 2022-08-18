@@ -5,46 +5,18 @@
     </ion-buttons>
     <ion-title>Identification</ion-title>
   </ion-toolbar>
+</ion-header>
   
-  <!-- <div class="eachblock">
-    <div class="title">Upload Image</div>
-    <div class="inputfeild">
-      <ion-button expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
-      <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
-      <div class="lastbutton">
-        <ion-button class="btnclass" (click)="submitpost()">Submit</ion-button>
-      </div>
-      <div class="imgclass">
-        <ion-img width="80" height="80" [src]="finalImagePath"></ion-img><br>
-      </div>
-    </div>
-  </div> -->
-
-<div class="title">Add Attributes</div>
-<div class="container">
-  <ion-button  routerLink="/attributes">
-    <ion-icon name="add"></ion-icon>
-    <ion-label>Add Attributes</ion-label>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-select placeholder="Select Number" [(ngModel)]="userPhone">
+        <ion-select-option value="9545366928">9545366928</ion-select-option>
+        <ion-select-option value="8208869881">8208869881</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="getacall()">
+    <ion-label>Call</ion-label>
   </ion-button>
-</div>
-  
-
-  </ion-header>
-  
-  <ion-content>
-    
-    
-  </ion-content>
-<!--
-  <div>
-    <ion-tab-bar>
-      <ion-buttons>
-        <input type="file" >
-      </ion-buttons>
-      <ion-buttons  routerLink="/attributes">
-        <ion-icon name="add"></ion-icon>
-        <ion-label>Add Attributes</ion-label>
-      </ion-buttons>
-    </ion-tab-bar>
-  </div>
-  -->
+</ion-content>

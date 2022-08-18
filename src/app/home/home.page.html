@@ -23,21 +23,30 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar></ion-searchbar>
   <ion-card *ngFor="let post of posts;let i=index;">
     <ion-card-header>
-      <img src="{{post.postImage}}"/>
-    </ion-card-header>
-    <ion-card-content>
-      <div class="iconsec">
-        <div class="eachsectionicon">{{post.postLikes}} 
-          <ion-icon name="heart" *ngIf="post.clicked"></ion-icon> 
-          <ion-icon name="heart-outline" *ngIf="!post.clicked" (click)="updatelike(post,i);"></ion-icon>
+      <div class="fullheadersection">
+        <div class="headerSection">
+          <div class="headerLeftSection">
+            <ion-avatar>
+              <img src="{{post.postRescuer.vImage}}">
+            </ion-avatar>
+          </div>
+          <div class="headerRightSection">
+            <div>{{post.postRescuer.vName}}</div>
+            <div>{{post.createdDate| date}}</div>
+          </div>
         </div>
-        <div class="eachsectionicon">
-          <ion-icon name="share-social-outline"></ion-icon>
+        <div class="iconsec">
+          <div class="eachsectionicon">{{post.postLikes}} 
+            <ion-icon name="heart" *ngIf="post.clicked"></ion-icon> 
+            <ion-icon name="heart-outline" *ngIf="!post.clicked" (click)="updatelike(post,i);"></ion-icon>
+          </div>
         </div>
       </div>
+    </ion-card-header>
+    <ion-card-content>
+      <img src="{{post.postImage}}"/>
     </ion-card-content>
   </ion-card>
 </ion-content>

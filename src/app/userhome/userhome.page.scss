@@ -3,11 +3,11 @@ ion-button{
 }
 
 ion-card{
-    background-color: #e7dbdb;
+    background-color: #d1dccc;
 }
 
 .iconsec{
-    width: 100%;
+    width: 20%;
     height: 50px;
     padding: 2%;
     display: flex;
@@ -19,4 +19,20 @@ ion-card{
     padding: 1% 0px;
     zoom: 1.5;
     font-size: 16px;
+}
+
+.fullheadersection{
+    display: flex;
+}
+
+.headerSection{
+    display: flex;
+    width: 80%;
+}
+
+.headerRightSection{
+    font-size: 21px;
+    margin-left: 20px;
+    font-family: monospace;
+    font-weight: 700;
 }

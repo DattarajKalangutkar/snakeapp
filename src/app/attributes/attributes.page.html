@@ -11,64 +11,62 @@
 
 <ion-content>
   <div class="container1">
-    <ion-content class='background' fullscreen></ion-content>
-      <div class="container3">
-        <p class>Note: No field is mandatory.</p>
-        <p class>Enter the details only if you know correctly.</p>
-      </div>
-      <ion-list>
-        <ion-item class="eachseg">
-          <ion-label>Snake Type</ion-label>
-          <ion-select multiple="false" cancelText="cancel" [(ngModel)]="snakeData.snaketype">
-            <ion-select-option *ngFor="let type of master_data.snaketype" value="{{type.id}}">{{type.snakeTypeName}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-        
-        <ion-item class="eachseg">
-          <ion-label>Color</ion-label>
-          <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.color">
-            <ion-select-option *ngFor="let color of master_data.color" value="{{color.id}}">{{color.colorName}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-  
-        <ion-item class="eachseg">
-          <ion-label>Head Shape</ion-label>
-          <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.headshape">
-            <ion-select-option *ngFor="let headshape of master_data.headshape" value="{{headshape.id}}">{{headshape.headshapeName}}</ion-select-option>
-          </ion-select>
-        </ion-item>
+    <div class="container3">
+      <p class>Note: No field is mandatory.</p>
+      <p class>Enter the details only if you know correctly.</p>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label>Snake Type</ion-label>
+        <ion-select multiple="false" cancelText="cancel" [(ngModel)]="snakeData.snaketype">
+          <ion-select-option *ngFor="let type of master_data.snaketype" value="{{type.id}}">{{type.snakeTypeName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Color</ion-label>
+        <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.color">
+          <ion-select-option *ngFor="let color of master_data.color" value="{{color.id}}">{{color.colorName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-        <ion-item class="eachseg">
-          <ion-label>Eye Pupil</ion-label>
-          <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.eyeshape">
-            <ion-select-option *ngFor="let eyeshape of master_data.eyeshape" value="{{eyeshape.id}}">{{eyeshape.eyeshapeName}}</ion-select-option>
-          </ion-select>
-        </ion-item>
+      <ion-item>
+        <ion-label>Head Shape</ion-label>
+        <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.headshape">
+          <ion-select-option *ngFor="let headshape of master_data.headshape" value="{{headshape.id}}">{{headshape.headshapeName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-        <ion-item class="eachseg">
-          <ion-label>Pattern</ion-label>
-          <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.pattern">
-            <ion-select-option *ngFor="let pattern of master_data.pattern" value="{{pattern.id}}">{{pattern.patternName}}</ion-select-option>
-          </ion-select>
-        </ion-item>
+      <ion-item>
+        <ion-label>Eye Pupil</ion-label>
+        <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.eyeshape">
+          <ion-select-option *ngFor="let eyeshape of master_data.eyeshape" value="{{eyeshape.id}}">{{eyeshape.eyeshapeName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-        <ion-item class="eachseg">
-          <ion-label>Symptoms</ion-label>
-          <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.symptoms">
-            <ion-select-option *ngFor="let symptoms of master_data.symptoms" value="{{symptoms.id}}">{{symptoms.symptomsName}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-  
-      </ion-list>
-    </div> 
+      <ion-item>
+        <ion-label>Pattern</ion-label>
+        <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.pattern">
+          <ion-select-option *ngFor="let pattern of master_data.pattern" value="{{pattern.id}}">{{pattern.patternName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Symptoms</ion-label>
+        <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.symptoms">
+          <ion-select-option *ngFor="let symptoms of master_data.symptoms" value="{{symptoms.id}}">{{symptoms.symptomsName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div> 
   <div class="lastbutton">
     <ion-button expand="full" (click)="findSnake()">Find the snake </ion-button>
   </div> 
-
   <div class="fullcontent">
-    <div class="eachseg" *ngFor="let snake of snakename">
-      <div class="custinfo">
-        <h4>{{snake}}</h4>
+    <div class="eachseg" *ngFor="let snake of snakename;let i=index;" (click)="opendetail(snake.id);">
+      <h3>Snake Name: {{snake.snakeName}}</h3>
+      <div class="snakeImage">
+        <img src="{{snake.snakeImage}}">
       </div>
     </div>
   </div>

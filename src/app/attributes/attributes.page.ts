@@ -80,4 +80,9 @@ export class AttributesPage implements OnInit {
       this.router.navigate(['/userhome/']);
     }
   }
+
+  opendetail(id)
+  {
+    this.router.navigate(['/snakedetail/'+id])
+  }
 }

@@ -37,7 +37,7 @@
         <div class="iconsec">
           <div class="eachsectionicon">{{post.postLikes}} 
             <ion-icon name="heart" *ngIf="post.clicked"></ion-icon> 
-            <ion-icon name="heart-outline" *ngIf="!post.clicked" (click)="updatelike(post,i);"></ion-icon>
+            <ion-icon name="heart-outline" *ngIf="!post.clicked" (click)="updatelike(post);"></ion-icon>
           </div>
         </div>
       </div>

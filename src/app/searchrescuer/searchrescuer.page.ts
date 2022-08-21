@@ -5,11 +5,18 @@ import { SnakeService } from '../snake.service';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-searchrescuer',
   templateUrl: './searchrescuer.page.html',
   styleUrls: ['./searchrescuer.page.scss'],
+})
+@NgModule({
+  imports: [
+  ],
+  declarations: [SearchrescuerPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SearchrescuerPage implements OnInit {
   @ViewChild('map')

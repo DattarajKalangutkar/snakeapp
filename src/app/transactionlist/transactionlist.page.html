@@ -5,7 +5,7 @@
         <ion-icon name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title >Transcation</ion-title>
+    <ion-title >Transaction</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="eachseg" *ngFor="let tran of trans;let i=index;">
-      <h3>Transcation No : {{tran.tranid}}</h3>
+      <h3>Transaction No : {{tran.tranid}}</h3>
       <div class="custinfo">
         <h4>Catcher: {{tran.transRescuerId.vName}}</h4>
         <h4>Phone: {{tran.transRescuerId.vPhone}}</h4>

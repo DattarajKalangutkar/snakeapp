@@ -10,6 +10,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="container1">
     <div class="container3">
       <p class>Note: No field is mandatory.</p>
@@ -18,7 +21,7 @@
     <ion-list>
       <ion-item>
         <ion-label>Snake Type</ion-label>
-        <ion-select multiple="false" cancelText="cancel" [(ngModel)]="snakeData.snaketype" interface="action-sheet">
+        <ion-select multiple="false" cancelText="cancel" okText="Okay!" [(ngModel)]="snakeData.snaketype">
           <ion-select-option *ngFor="let type of master_data.snaketype" value="{{type.id}}">{{type.snakeTypeName}}</ion-select-option>
         </ion-select>
       </ion-item>

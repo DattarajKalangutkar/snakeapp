@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Search Rescuser</ion-title>
+    <ion-title>Near By Rescuser</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <div class="rescuerdetail">
-    <h5>Rescuer Details</h5>
+    <h5>Rescuer List</h5>
     <div class="container" *ngFor="let rescuser of rescuserlist;">
       <div class="rescuserImg">
         <img [src]="rescuser.rescuerImage">

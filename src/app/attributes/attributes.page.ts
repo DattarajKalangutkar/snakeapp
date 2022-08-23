@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
 import { Storage } from '@ionic/storage-angular';
+import { MenuController,ToastController, LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-attributes',
   templateUrl: './attributes.page.html',
   styleUrls: ['./attributes.page.scss'],
 })
 export class AttributesPage implements OnInit {
+  loader:any;
   loggin:any;
   master_data:any = {
     "snaketype":[],
@@ -28,7 +30,7 @@ export class AttributesPage implements OnInit {
   };
 
   snakename:any = [];
-  constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService,private storage: Storage) {
+  constructor(public loadingCtrl: LoadingController,private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService,private storage: Storage,private toastCtrl: ToastController) {
     this.getallmaster();
   }
 
@@ -60,10 +62,12 @@ export class AttributesPage implements OnInit {
 
   findSnake()
   {
+    this.showLoading('Searching.....');
     this.snakeService.getsnakealgo(this.snakeData).subscribe((data:any)=>{
       console.log(data);
       if(data.flag)
       {
+        this.loader.dismiss();
         this.snakename = data.snakes;
       }
     });
@@ -84,5 +88,31 @@ export class AttributesPage implements OnInit {
   opendetail(id)
   {
     this.router.navigate(['/snakedetail/'+id])
+  }
+
+  doRefresh(event) 
+  {
+    this.getallmaster();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
+
+  async presentToast(msg) {
+    let toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'bottom'
+    });
+  
+    toast.present();
+  }
+
+  async showLoading(msg) {
+    this.loader = await this.loadingCtrl.create({
+      message: msg,
+      spinner: 'circles',
+    });
+    this.loader.present();
   }
 }

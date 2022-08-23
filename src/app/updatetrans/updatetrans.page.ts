@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
-import { MenuController,ToastController } from '@ionic/angular';
+import { MenuController,ToastController,LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-updatetrans',
@@ -9,7 +9,7 @@ import { MenuController,ToastController } from '@ionic/angular';
   styleUrls: ['./updatetrans.page.scss'],
 })
 export class UpdatetransPage implements OnInit {
-
+  loader:any;
   clientRole:any = '1';
   step:number;
   progresscount: number = 1;
@@ -30,7 +30,7 @@ export class UpdatetransPage implements OnInit {
   filedata:any;
   finalImagePath:string = '';
   isUploaded:boolean = true;
-  constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService,private toastCtrl: ToastController) {
+  constructor(public loadingCtrl: LoadingController,private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService,private toastCtrl: ToastController) {
     this.id = (this.activeRoute.snapshot.paramMap.get('id') !=null) ? this.activeRoute.snapshot.paramMap.get('id'):'';
     this.gettransdetail(this.id);
     this.getsnake();
@@ -82,13 +82,18 @@ export class UpdatetransPage implements OnInit {
     const formData = new FormData();
     formData.append("transactionImage",this.filedata);
     formData.append("modules","transaction");
-    this.snakeService.uploadImage(formData).subscribe((data:any)=>{
+
+    this.showLoading('Uploading.....');
+    this.snakeService.uploadImage(formData).subscribe((data:any)=>
+    {
       if(data.status)
       {
+        this.loader.dismiss();
         this.isUploaded = false;
         this.presentToast("Profile Pic Uploaded Successfully");
         this.finalImagePath = this.clientdata.transImage = data.filepath;
       }
+      
     });
   }
 
@@ -100,5 +105,13 @@ export class UpdatetransPage implements OnInit {
     });
   
     toast.present();
+  }
+
+  async showLoading(msg) {
+    this.loader = await this.loadingCtrl.create({
+      message: msg,
+      spinner: 'circles',
+    });
+    this.loader.present();
   }
 }

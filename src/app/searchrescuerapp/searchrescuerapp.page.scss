@@ -1,0 +1,52 @@
+.rescuerdetail{
+    width: 100%;
+    margin: 2px;
+    padding: 5%;
+}
+
+.rescuerdetail h5{
+    text-align: center;
+    padding: 3px 0px;
+    font-size: 25px;
+    margin: 6%;
+}
+
+.rescuerdetail .container{
+    display: flex;
+    justify-content: space-around;
+    background: #cecbc8;
+    box-shadow: 5px 10px #babadf;
+    padding: 14px 6px;
+}
+
+.rescuerdetail .container .rescuserImg{
+    width: 110px;
+    height: 100px;
+}
+
+.rescuerdetail .container .rescuserImg img
+{
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.rescuerdetail .container .otherdetail{
+    text-align: center;
+}
+
+.rescuerdetail .container .otherdetail h3{
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0px;
+    line-height: 1;
+}
+
+.rescuerdetail .container .otherdetail h4{
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0px;
+}
+

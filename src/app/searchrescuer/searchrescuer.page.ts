@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap, MapType } from '@capacitor/google-maps';
-import { Geolocation } from '@capacitor/geolocation';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { SnakeService } from '../snake.service';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,12 +11,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   selector: 'app-searchrescuer',
   templateUrl: './searchrescuer.page.html',
   styleUrls: ['./searchrescuer.page.scss'],
-})
-@NgModule({
-  imports: [
-  ],
-  declarations: [SearchrescuerPage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SearchrescuerPage implements OnInit {
   @ViewChild('map')
@@ -34,7 +28,7 @@ export class SearchrescuerPage implements OnInit {
   rescuserId:string = '';
   userId:any;
 
-  constructor(private alertController:AlertController,private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
+  constructor(private geolocation: Geolocation,private alertController:AlertController,private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) {
     this.init();
   }
 
@@ -69,7 +63,7 @@ export class SearchrescuerPage implements OnInit {
 
 
   async getcurrentlocation(){
-    const coordinates = await Geolocation.getCurrentPosition();
+    const coordinates = await this.geolocation.getCurrentPosition();
     this.currentlat = coordinates.coords.latitude;
     this.currentlong = coordinates.coords.longitude;
   }
@@ -151,6 +145,14 @@ export class SearchrescuerPage implements OnInit {
     this.snakeService.initiateTrans(data).subscribe((data:any)=>{
       this.router.navigate(['/transactionlist/']);
     });
+  }
+
+  doRefresh(event) 
+  {
+    
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 }
 

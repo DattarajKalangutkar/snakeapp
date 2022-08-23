@@ -94,4 +94,11 @@ export class RescusertranlistPage implements OnInit {
     }
   }
 
+  doRefresh(event) 
+  {
+    this.gettranscationlist();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
 }

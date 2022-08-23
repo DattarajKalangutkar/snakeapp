@@ -14,8 +14,8 @@
   <div class="fullcontent">
     <div class="eachseg" *ngFor="let rank of alltoprescuers;let i=index;" (click)="opendetail(rank.id);">
       <div class="custinfo">
-        <h4>Name: {{rank.rescuerName}}</h4>
         <h4>Points: {{rank.rescuerPoints}}</h4>
+        <h4>Name: {{rank.rescuerName}}</h4>
       </div>
     </div>
   </div>

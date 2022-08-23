@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnakeService } from '../snake.service';
-import { Geolocation } from '@capacitor/geolocation';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { MenuController,ToastController } from '@ionic/angular';
 
 @Component({
@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   private _storage: Storage | null = null;
   rescuserId:any;
   posts:any=[];
-  constructor(private toastCtrl: ToastController,private menu: MenuController,private snakeService:SnakeService,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
+  constructor(private geolocation: Geolocation,private toastCtrl: ToastController,private menu: MenuController,private snakeService:SnakeService,private storage: Storage,private router: Router,public activeRoute: ActivatedRoute) { 
     this.menu.enable(true);
     this.init();
     this.getpost();
@@ -45,7 +45,7 @@ export class HomePage implements OnInit {
 
   async activeLatLong()
   {
-    const coordinates = await Geolocation.getCurrentPosition();
+    const coordinates = await this.geolocation.getCurrentPosition();
     var data = {
       "lat":coordinates.coords.latitude,
       "long":coordinates.coords.longitude
@@ -64,7 +64,6 @@ export class HomePage implements OnInit {
   {
     this.rescuserId = await this.storage.get('rescuerid');
     this.snakeService.getallpost(1,this.rescuserId).subscribe((data:any)=>{
-      console.log(data);
       this.posts=data.rows;
     });
   }
@@ -86,10 +85,19 @@ export class HomePage implements OnInit {
       "client":this.rescuserId,
       "postid":data.id
     };
-    
+    this.posts[index].postLikes = Number(this.posts[index].postLikes)+1;
+    this.posts[index].clicked = true;
     this.snakeService.likepost(likedata).subscribe((data:any)=>{
       this.posts[index].postLikes = Number(this.posts[index].postLikes)+1;
       this.posts[index].clicked = true;
     });
+  }
+
+  doRefresh(event) 
+  {
+    this.getpost();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 }

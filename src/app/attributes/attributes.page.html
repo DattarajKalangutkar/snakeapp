@@ -19,7 +19,6 @@
       <ion-item>
         <ion-label>Snake Type</ion-label>
         <ion-select multiple="false" cancelText="cancel" [(ngModel)]="snakeData.snaketype" interface="action-sheet">
-          <ion-select-option value="">select an snake type</ion-select-option>
           <ion-select-option *ngFor="let type of master_data.snaketype" value="{{type.id}}">{{type.snakeTypeName}}</ion-select-option>
         </ion-select>
       </ion-item>

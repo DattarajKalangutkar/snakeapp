@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
-import { MenuController,ToastController } from '@ionic/angular';
+import { MenuController,ToastController, LoadingController } from '@ionic/angular';
 // import { exit } from 'process';
 
 @Component({
@@ -9,6 +9,7 @@ import { MenuController,ToastController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  loader:any;
   clientRole:any = '1';
   step:string = 'step1';
   progresscount: number = 0.3;
@@ -33,7 +34,7 @@ export class RegisterPage implements OnInit {
   primary_key:string = '';
 
 
-  constructor(private snakeService:SnakeService,private menu: MenuController,private toastCtrl: ToastController) {
+  constructor(public loadingCtrl: LoadingController,private snakeService:SnakeService,private menu: MenuController,private toastCtrl: ToastController) {
     this.menu.enable(false);
     this.clientRole = history.state.data;
   }
@@ -75,10 +76,11 @@ export class RegisterPage implements OnInit {
       formData.append("modules","user");
     }
 
-
+    this.showLoading('Uploading.....');
     this.snakeService.uploadImage(formData).subscribe((data:any)=>{
       if(data.status)
       {
+        this.loader.dismiss();
         this.isUploaded = false;
         this.presentToast("Profile Pic Uploaded Successfully");
         this.finalImagePath = data.filepath;
@@ -257,5 +259,13 @@ export class RegisterPage implements OnInit {
     });
   
     toast.present();
+  }
+
+  async showLoading(msg) {
+    this.loader = await this.loadingCtrl.create({
+      message: msg,
+      spinner: 'circles',
+    });
+    this.loader.present();
   }
 }

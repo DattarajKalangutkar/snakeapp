@@ -11,23 +11,6 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <div class="map">
-    <capacitor-google-map id="map"></capacitor-google-map>
-  </div>
-  <div class="rescuerdetail" *ngIf="detailview">
-    <h5>Rescuer Details</h5>
-    <div class="container">
-      <div class="rescuserImg">
-        <img [src]="rescuerImage">
-      </div>
-      <div class="otherdetail">
-        <h3>{{rescuserName}}</h3>
-        <h4>Distance: {{rescuserDistance}}</h4>
-        <ion-button class="btnclass" (click)="presentAlertConfirm()">Confirm?</ion-button>
-      </div>
-    </div>
-  </div>
-
   <div class="rescuerdetail">
     <h5>Rescuer Details</h5>
     <div class="container" *ngFor="let rescuser of rescuserlist;">
@@ -37,7 +20,8 @@
       <div class="otherdetail">
         <h3>{{rescuser.rescuerName}}</h3>
         <h4>Distance: {{rescuser.distance}}</h4>
-        <ion-button class="btnclass" (click)="presentAlertConfirm()">Confirm?</ion-button>
+        <a href="tel:{{rescuser.rescuerPhone}}"><ion-button class="btnclass"><ion-icon name="call"></ion-icon></ion-button></a>
+        <ion-button class="btnclass" (click)="presentAlertConfirm(rescuser.id)"><ion-icon name="checkmark"></ion-icon></ion-button>
       </div>
     </div>
   </div>

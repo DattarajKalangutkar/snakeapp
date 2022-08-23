@@ -14,11 +14,11 @@
     <div class="title">Post Image</div>
     <div class="inputfeild">
       <ion-button expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
-      <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
+      <input type="file" id="uploader" accept="image/*" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
       <div class="lastbutton">
         <ion-button class="btnclass" (click)="submitpost()">Submit</ion-button>
       </div>
-      <div class="imgclass">
+      <div class="imgclass" *ngIf="onceUploaded">
         <ion-img width="80" height="80" [src]="finalImagePath"></ion-img><br>
       </div>
     </div>

@@ -10,16 +10,19 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="fullcontent">
     <div class="filtersection">
       <div class="btnsection">
         <ion-button *ngIf="btnToggle" style="background-color:#5260ff" (click)="showFilter('all')">
           All 
         </ion-button>
-        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('1')">
+        <ion-button *ngIf="btnToggle" style="background-color:#54ff5778" (click)="showFilter('1')">
           Created 
         </ion-button>
-        <ion-button *ngIf="btnToggle" style="background-color:#be4619" (click)="showFilter('2')">
+        <ion-button *ngIf="btnToggle" style="background-color:#54ff5778" (click)="showFilter('2')">
           Updated 
         </ion-button>
         <ion-button *ngIf="btnToggle" style="background-color:#33c51f" (click)="showFilter('3')">

@@ -123,7 +123,10 @@ const routes: Routes = [
     path: 'editinfo',
     loadChildren: () => import('./editinfo/editinfo.module').then( m => m.EditinfoPageModule)
   },
-
+  {
+    path: 'searchrescuerapp',
+    loadChildren: () => import('./searchrescuerapp/searchrescuerapp.module').then( m => m.SearchrescuerappPageModule)
+  },
 ];
 
 @NgModule({

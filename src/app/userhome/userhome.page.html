@@ -6,8 +6,11 @@
       </ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/searchrescuer']">
+      <ion-button [routerLink]="['/searchrescuerapp']">
         <ion-icon name="locate-outline"></ion-icon> 
+      </ion-button>
+      <ion-button [routerLink]="['/attributes']">
+        <ion-icon name="finger-print"></ion-icon> 
       </ion-button>
       <ion-button [routerLink]="['/transactionlist']">
         <ion-icon name="call-outline"></ion-icon>
@@ -20,6 +23,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngFor="let post of posts;let i=index;">
     <ion-card-header>
       <div class="fullheadersection">
@@ -37,7 +43,7 @@
         <div class="iconsec">
           <div class="eachsectionicon">{{post.postLikes}} 
             <ion-icon name="heart" *ngIf="post.clicked"></ion-icon> 
-            <ion-icon name="heart-outline" *ngIf="!post.clicked" (click)="updatelike(post);"></ion-icon>
+            <ion-icon name="heart-outline" *ngIf="!post.clicked" (click)="updatelike(post,i);"></ion-icon>
           </div>
         </div>
       </div>

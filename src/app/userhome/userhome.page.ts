@@ -53,15 +53,26 @@ export class UserhomePage implements OnInit {
     });
   }
 
-  updatelike(data)
+  updatelike(data,index)
   {
     var likedata = {
       "type":"2",
       "client":this.userId,
       "postid":data.id
     };
+    this.posts[index].postLikes = Number(this.posts[index].postLikes)+1;
+    this.posts[index].clicked = true;
     this.snakeService.likepost(likedata).subscribe((data:any)=>{
-      console.log(data);
+      this.posts[index].postLikes = Number(this.posts[index].postLikes)+1;
+      this.posts[index].clicked = true;
     })
+  }
+
+  doRefresh(event) 
+  {
+    this.getpost();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 }

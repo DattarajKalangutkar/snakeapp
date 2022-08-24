@@ -12,6 +12,7 @@ export class TransactionlistPage implements OnInit {
   private _storage: Storage | null = null;
   clientRole:any = '2';
   userid:any;
+  loggin:any;
   btnToggle:boolean = false;
   trans:any = [];
   items:any = [];
@@ -77,5 +78,26 @@ export class TransactionlistPage implements OnInit {
   editorder(data)
   {
     this.router.navigate(['/completetrans/'+data.id])
+  }
+
+  navigatetohome()
+  {
+    console.log(this.loggin);
+    if(this.loggin == "Rescuser")
+    {
+      this.router.navigate(['/home/']);
+    }
+    else
+    {
+      this.router.navigate(['/userhome/']);
+    }
+  }
+
+  doRefresh(event) 
+  {
+    this.gettranscationlist();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 }

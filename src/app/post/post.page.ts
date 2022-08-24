@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MenuController,ToastController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-post',
@@ -9,18 +10,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./post.page.scss'],
 })
 export class PostPage implements OnInit {
+  loader:any;
   private _storage: Storage | null = null;
   rescuerid:any;
   loggin:any;
-
+  onceUploaded:boolean = false;
   image:any;
   filedata:any;
   finalImagePath:string = '';
-  constructor(private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) { 
+  constructor(public loadingCtrl: LoadingController, private storage: Storage,private snakeService:SnakeService,private router: Router,public activeRoute: ActivatedRoute) { 
     this.init();
   }
 
-  
 
    async ionViewDidEnter()
   {
@@ -44,10 +45,14 @@ export class PostPage implements OnInit {
     const formData = new FormData();
     formData.append("postImage",this.filedata);
     formData.append("modules","post");
-    this.snakeService.uploadImage(formData).subscribe((data:any)=>{
-      console.log(data);
+
+    this.showLoading('Uploading.....');
+
+    this.snakeService.uploadImage(formData).subscribe((data:any)=>
+    {
+      this.loader.dismiss();
       this.finalImagePath = data.filepath;
-      console.log(this.finalImagePath);
+      this.onceUploaded = true;
     });
   }
 
@@ -79,4 +84,11 @@ export class PostPage implements OnInit {
     }
   }
 
+  async showLoading(msg) {
+    this.loader = await this.loadingCtrl.create({
+      message: msg,
+      spinner: 'circles',
+    });
+    this.loader.present();
+  }
 }

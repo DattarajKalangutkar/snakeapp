@@ -3,8 +3,6 @@ import { SnakeService } from '../snake.service';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 
-
-
 @Component({
   selector: 'app-events',
   templateUrl: './events.page.html',
@@ -22,8 +20,6 @@ export class EventsPage implements OnInit {
     const storage = await this.storage.create();
   
   }
-
-  
 
   async ionViewDidEnter()
   {
@@ -56,6 +52,14 @@ export class EventsPage implements OnInit {
     {
       this.router.navigate(['/userhome/']);
     }
+  }
+
+  doRefresh(event) 
+  {
+    this.getallevents();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 
 }

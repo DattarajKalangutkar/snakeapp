@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SnakeService } from '../snake.service';
 import { Storage } from '@ionic/storage-angular';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MenuController} from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -51,8 +51,6 @@ export class LoginPage implements OnInit {
         "rescuerPassword":this.userpass
       };
 
-     
-
       this.snakeService.loginRescuser(data).subscribe((data:any)=>{
         if(data.flag)
         {
@@ -80,7 +78,6 @@ export class LoginPage implements OnInit {
       this.snakeService.loginUser(data).subscribe((data:any)=>{
         if(data.flag)
         {
-          console.log(data);
           this.storage.clear();
           this.storage.set('loggedin',"User");
           this.storage.set('userid',data.userid);

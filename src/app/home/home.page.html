@@ -9,9 +9,9 @@
       <ion-button (click)="activeLatLong()">
         <ion-icon name="refresh-outline"></ion-icon>
       </ion-button>
-      <!-- <ion-button [routerLink]="['/notification']">
-        <ion-icon name="notifications-outline"></ion-icon>
-      </ion-button> -->
+      <ion-button [routerLink]="['/post']">
+        <ion-icon name="images"></ion-icon>
+      </ion-button>
       <ion-button [routerLink]="['/rescusertranlist']">
         <ion-icon name="call-outline"></ion-icon>
       </ion-button>
@@ -23,6 +23,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngFor="let post of posts;let i=index;">
     <ion-card-header>
       <div class="fullheadersection">

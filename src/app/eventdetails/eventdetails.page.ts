@@ -37,19 +37,4 @@ export class EventdetailsPage implements OnInit {
     });
   }
 
-  // async find(){
-  //   let logged = await this.storage.get("loggedin");
-  //   console.log(logged);
-  //   if(logged == "Rescuser")
-  //   {
-  //     this.router.navigate(['/home/']);
-  //   }
-  //   else
-  //   {
-  //     this.router.navigate(['/userhome/']);
-  //   }
-    
-  // }
- 
-
 }

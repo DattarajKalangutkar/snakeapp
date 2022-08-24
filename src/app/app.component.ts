@@ -16,16 +16,15 @@ export class AppComponent {
     { title: 'History', url: '/transactionlist', icon: 'speedometer'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'planet'},
     { title: 'Ranking', url: '/ranking', icon: 'ribbon'},
-    { title: 'Identification', url: '/attributes', icon: 'finger-print'},
   ];
   public rescuerPages = [
     { title: 'Events', url: '/events', icon: 'globe'},
     { title: 'First Aid', url: '/firstaid', icon: 'medkit'},
     { title: 'wild Life', url: '/wildlife', icon: 'bug'},
     { title: 'Hospitals', url: '/hospital', icon: 'add-circle'},
-    { title: 'History', url: '/transactionlist', icon: 'speedometer'},
+    { title: 'History', url: '/rescusertranlist', icon: 'speedometer'},
     { title: 'Snake Info', url: '/snakeinfo', icon: 'planet'},
-    { title: 'Post', url: '/post', icon: 'images'},
+    { title: 'Ranking', url: '/ranking', icon: 'ribbon'},
   ];
   client_arr:any = [];
   private _storage: Storage | null = null;
@@ -40,7 +39,6 @@ export class AppComponent {
 
   async ngOnInit() {
     let logged = await this.storage.get("loggedin");
-    console.log(logged);
     if(logged == "Rescuser")
     {
       this.rescuerTab = true;
@@ -49,5 +47,10 @@ export class AppComponent {
     {
       this.userTab = true;
     }
+  }
+
+  ionViewDidEnter()
+  {
+    console.log("Everything in app");
   }
 }

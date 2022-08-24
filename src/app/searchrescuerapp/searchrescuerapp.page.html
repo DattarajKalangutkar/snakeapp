@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Near By Rescuser</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="rescuerdetail">
+    <h5>Rescuer List</h5>
+    <div class="container" *ngFor="let rescuser of rescuserlist;">
+      <div class="rescuserImg">
+        <img [src]="rescuser.rescuerImage">
+      </div>
+      <div class="otherdetail">
+        <h3>{{rescuser.rescuerName}}</h3>
+        <h4>Distance: {{rescuser.distance}}</h4>
+        <a href="tel:{{rescuser.rescuerPhone}}"><ion-button class="btnclass"><ion-icon name="call"></ion-icon></ion-button></a>
+        <ion-button class="btnclass" (click)="presentAlertConfirm(rescuser.id)"><ion-icon name="checkmark"></ion-icon></ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

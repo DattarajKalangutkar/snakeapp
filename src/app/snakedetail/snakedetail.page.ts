@@ -15,7 +15,8 @@ export class SnakedetailPage implements OnInit {
     "type":"",
     "color":'',
     "headshpae":"",
-    "image":""
+    "image":"",
+    "pattern":""
   };
   constructor(private router: Router,public activeRoute: ActivatedRoute,private snakeService:SnakeService) {
     this.id = (this.activeRoute.snapshot.paramMap.get('id') !=null) ? this.activeRoute.snapshot.paramMap.get('id'):'';
@@ -35,7 +36,8 @@ export class SnakedetailPage implements OnInit {
         "type":snakedata.snakeType.vName,
         "color":snakedata.snakeColor.vName,
         "headshpae":snakedata.snakeHeadShape.vName,
-        "image":snakedata.snakeImage
+        "image":snakedata.snakeImage,
+        "pattern":snakedata.snakePattern.vName
       }
       console.log(this.data);
     });

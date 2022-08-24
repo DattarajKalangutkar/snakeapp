@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Transcation - {{transdata.tranid}}</ion-title>
+    <ion-title>Transaction - {{transdata.tranid}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -77,7 +77,7 @@
       <div class="eachblock">
         <div class="title">Snake Images</div>
         <div class="inputfeild">
-          <ion-button *ngIf="isUploaded" expand="full" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
+          <ion-button *ngIf="isUploaded" expand="full" class="btnclass2" onclick="document.querySelector('#uploader').click()">Upload</ion-button>
           <ion-button *ngIf="!isUploaded" expand="full">Uploaded</ion-button>
           <input type="file" id="uploader" [(ngModel)]="image" (change)="selectedFile($event)" hidden>
         </div>
